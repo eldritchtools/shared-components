@@ -73,9 +73,7 @@ function Footer({description, gameName, developerName, githubLink}) {
                 <p>
                     {description}
                     <br /><br />
-                    This project is designed as a free fan-made project for the community. 
-                    I create web tools for various games that will hopefully be useful to people. If you'd like
-                    to support me, you can check out my ko-fi page or other socials. Thank you!
+                    This project is designed as a free fan-made project for the community. I create web tools for various games that will hopefully be useful to people. If you'd like to support me, you can check out my ko-fi page or other socials. Thank you!
                 </p>
 
                 <div style={{ marginTop: "0.75rem" }}>
@@ -83,9 +81,7 @@ function Footer({description, gameName, developerName, githubLink}) {
                 </div>
 
                 <p style={{ fontSize: "0.8rem" }}>
-                    This tool is a fan-made project and is not affiliated with or endorsed by {developerName}.
-                    {gameName} and all related assets are © {developerName}. All rights reserved to their respective owners.
-                    The tool is free to use, and any donations go directly to supporting development of this tool and other free tools.
+                    This tool is a fan-made project and is not affiliated with or endorsed by {developerName}. {gameName} and all related assets are © {developerName}. All rights reserved to their respective owners. The tool is free to use, and any donations go directly to supporting development of this tool and other free tools.
                 </p>
             </div>
         </footer>

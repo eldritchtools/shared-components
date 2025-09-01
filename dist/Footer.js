@@ -119,7 +119,7 @@ function Footer(_ref3) {
         style: {
           fontSize: "0.8rem"
         },
-        children: ["This tool is a fan-made project and is not affiliated with or endorsed by ", developerName, ".", gameName, " and all related assets are \xA9 ", developerName, ". All rights reserved to their respective owners. The tool is free to use, and any donations go directly to supporting development of this tool and other free tools."]
+        children: ["This tool is a fan-made project and is not affiliated with or endorsed by ", developerName, ". ", gameName, " and all related assets are \xA9 ", developerName, ". All rights reserved to their respective owners. The tool is free to use, and any donations go directly to supporting development of this tool and other free tools."]
       })]
     })
   });
