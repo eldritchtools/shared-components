@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import db from "./db";
+import useDebouncedEffect from "use-debounced-effect";
 
 function useDBState(dbName, key, defaultValue, settings = {}) {
     const [state, setState] = useState(defaultValue);
