@@ -10,7 +10,8 @@
     },
     "peerDependencies": {
         "react": "^19.0.0",
-        "react-dom": "^19.0.0"
+        "react-dom": "^19.0.0",
+        "use-debounced-effect": "^2.0.1"
     },
     "devDependencies": {
         "@babel/cli": "^7.28.3",
@@ -33,8 +34,5 @@
                 }
             ]
         ]
-    },
-    "dependencies": {
-        "use-debounced-effect": "^2.0.1"
     }
 }
