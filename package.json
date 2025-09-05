@@ -20,8 +20,21 @@
     },
     "babel": {
         "presets": [
-            ["@babel/preset-env", {"modules": false}],
-            ["@babel/preset-react", {"runtime": "automatic"}]
+            [
+                "@babel/preset-env",
+                {
+                    "modules": false
+                }
+            ],
+            [
+                "@babel/preset-react",
+                {
+                    "runtime": "automatic"
+                }
+            ]
         ]
+    },
+    "dependencies": {
+        "use-debounced-effect": "^2.0.1"
     }
 }
