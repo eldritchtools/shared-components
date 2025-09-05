@@ -8,5 +8,5 @@ Add `"@eldritchtools/shared-components": "github:eldritchtools/shared-components
 
 Provides the following:
 - [Footer](src/Footer) - Footer for displaying social links and copyright disclaimer
-- [db](src/db) - IndexedDB wrapper
+- [db, useDBState](src/db) - IndexedDB wrapper
 - [ProfileProvider, useProfiles](src/profileProvider) - React Context Provider for handling profiles, uses the IndexedDB wrapper above
