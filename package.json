@@ -1,6 +1,6 @@
 {
     "name": "@eldritchtools/shared-components",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "main": "dist/index.js",
     "files": [
         "dist"
