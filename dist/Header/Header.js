@@ -21,6 +21,7 @@ function Header(_ref) {
     style: {
       position: "sticky",
       top: 0,
+      minHeight: "3rem",
       padding: "1rem 2rem",
       background: "#111111",
       color: "#ddd",
