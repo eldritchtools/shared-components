@@ -21,29 +21,32 @@ function Header(_ref) {
     style: {
       position: "sticky",
       top: 0,
-      width: "100%",
       padding: "1rem 2rem",
       background: "#111111",
       color: "#ddd",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      fontWeight: "bold",
-      fontSize: "1.5rem",
       boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-      borderBottom: "1px solid #aaa",
+      paddingRight: "1rem",
+      boxSizing: "border-box",
       zIndex: 1000
     },
     children: [/*#__PURE__*/_jsx("div", {}), /*#__PURE__*/_jsx("div", {
       style: {
-        textAlign: "center",
-        flexGrow: 1
+        margin: 0,
+        fontSize: "1.25rem",
+        fontWeight: "bold",
+        position: "absolute",
+        left: "50%",
+        transform: "translateX(-50%)"
       },
       children: title
     }), /*#__PURE__*/_jsx("div", {
       style: {
         fontWeight: "normal",
         fontSize: "0.85rem",
+        opacity: 0.75,
         textAlign: "right"
       },
       children: lastUpdated ? "Last updated: ".concat(formatLastUpdated(lastUpdated)) : null
