@@ -49,7 +49,11 @@ function useDBState(dbName, key, defaultValue) {
             _context.n = 4;
             break;
           case 3:
-            setState(value);
+            if (settings.applyMigration) {
+              setState(settings.applyMigration(value));
+            } else {
+              setState(value);
+            }
           case 4:
             _context.p = 4;
             if (isMounted) setLoading(false);
