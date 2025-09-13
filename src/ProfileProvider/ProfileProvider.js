@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 import db from "../db/db";
 import useDBState from "../db/useDBState";
 
@@ -29,7 +29,7 @@ function decodeB64(b64) {
 export function ProfileProvider({ dbName, migrateProfile, debounceTimer = 1000, children }) {
     const [profiles, setProfiles] = useDBState(dbName, "profiles", ["default"]);
     const [currentProfile, setCurrentProfile] = useDBState(dbName, "currentProfile", "default");
-    const [profileData, setProfileData] = useDBState(dbName, `profile-${currentProfile}`, migrateProfile(), {debounced: debounceTimer});
+    const [profileData, setProfileData] = useDBState(dbName, `profile-${currentProfile}`, migrateProfile(), {debounced: debounceTimer, applyMigration: data => migrateProfile(data)});
 
     const addProfile = async (name) => {
         if (!name) return;

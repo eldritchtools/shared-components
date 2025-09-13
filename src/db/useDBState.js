@@ -17,7 +17,11 @@ function useDBState(dbName, key, defaultValue, settings = {}) {
                         await db.setItem(dbName, key, defaultValue);
                         setState(defaultValue);
                     } else {
-                        setState(value);
+                        if(settings.applyMigration) {
+                            setState(settings.applyMigration(value));
+                        } else {
+                            setState(value);
+                        }
                     }
                 }
             } finally {
