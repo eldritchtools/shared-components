@@ -33,7 +33,7 @@ function Header(_ref) {
       boxSizing: "border-box",
       zIndex: 1000
     },
-    children: [/*#__PURE__*/_jsx("div", {}), /*#__PURE__*/_jsx("div", {
+    children: [/*#__PURE__*/_jsx("div", {}), /*#__PURE__*/_jsx("h1", {
       style: {
         margin: 0,
         fontSize: "1.25rem",
