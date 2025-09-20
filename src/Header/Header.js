@@ -39,7 +39,7 @@ function Header({ title = null, lastUpdated = null }) {
                 
             </div>
 
-            <div style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", }}>{title}</div>
+            <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", }}>{title}</h1>
 
             <div style={{ fontWeight: "normal", fontSize: "0.85rem", opacity: 0.75, textAlign: "right" }}>
                 {lastUpdated ? `Last updated: ${formatLastUpdated(lastUpdated)}` : null}
