@@ -24,7 +24,7 @@ function Header({ title = null, lastUpdated = null }) {
                 position: "sticky",
                 top: 0,
                 minHeight: "3rem",
-                padding: "0.5rem 2rem",
+                padding: "0.2rem 2rem",
                 background: "#111111",
                 color: "#ddd",
                 display: "flex",
@@ -38,7 +38,7 @@ function Header({ title = null, lastUpdated = null }) {
         >
             <div>
                 <a href="https://eldritchtools.github.io/">
-                    <img src={logob64} alt="logo" width={48} height={48} style={{ borderRadius: "50%" }} />
+                    <img src={logob64} alt="logo" width={32} height={32} style={{ borderRadius: "50%" }} />
                 </a>
             </div>
 
