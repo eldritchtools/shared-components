@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./logo.png";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function formatLastUpdated(isoString) {
   if (!isoString) return null;
@@ -33,7 +34,20 @@ function Header(_ref) {
       boxSizing: "border-box",
       zIndex: 1000
     },
-    children: [/*#__PURE__*/_jsx("div", {}), /*#__PURE__*/_jsx("h1", {
+    children: [/*#__PURE__*/_jsx("div", {
+      children: /*#__PURE__*/_jsx("a", {
+        href: "https://eldritchtools.github.io/",
+        children: /*#__PURE__*/_jsx("img", {
+          src: logo,
+          alt: "logo",
+          width: 64,
+          height: 64,
+          style: {
+            borderRadius: "50%"
+          }
+        })
+      })
+    }), /*#__PURE__*/_jsx("h1", {
       style: {
         margin: 0,
         fontSize: "1.25rem",

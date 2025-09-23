@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./logo.png";
 
 function formatLastUpdated(isoString) {
     if (!isoString) return null;
@@ -34,9 +35,10 @@ function Header({ title = null, lastUpdated = null }) {
                 zIndex: 1000
             }}
         >
-            {/* Future link to landing page */}
             <div>
-                
+                <a href="https://eldritchtools.github.io/">
+                    <img src={logo} alt="logo" width={64} height={64} style={{ borderRadius: "50%" }} />
+                </a>
             </div>
 
             <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", }}>{title}</h1>
