@@ -23,7 +23,7 @@ function Header(_ref) {
       position: "sticky",
       top: 0,
       minHeight: "3rem",
-      padding: "1rem 2rem",
+      padding: "0.5rem 2rem",
       background: "#111111",
       color: "#ddd",
       display: "flex",
@@ -40,8 +40,8 @@ function Header(_ref) {
         children: /*#__PURE__*/_jsx("img", {
           src: logob64,
           alt: "logo",
-          width: 64,
-          height: 64,
+          width: 48,
+          height: 48,
           style: {
             borderRadius: "50%"
           }
