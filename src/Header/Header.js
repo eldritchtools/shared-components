@@ -24,7 +24,7 @@ function Header({ title = null, lastUpdated = null }) {
                 position: "sticky",
                 top: 0,
                 minHeight: "3rem",
-                padding: "0.2rem 2rem",
+                padding: "0.25rem 2rem",
                 background: "#111111",
                 color: "#ddd",
                 display: "flex",
