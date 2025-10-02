@@ -330,9 +330,10 @@ export function ProfileProvider(_ref) {
           case 11:
             // Migrate to latest version in case it's an old profile
             data = migrateProfile(data);
-            setProfiles(function (profiles) {
+            if (!profiles.includes(name)) setProfiles(function (profiles) {
               return [].concat(_toConsumableArray(profiles), [name]);
             });
+            if (name === currentProfile) setProfileData(data);
             _context6.n = 12;
             return db.setItem(dbName, "profile-".concat(name), data);
           case 12:

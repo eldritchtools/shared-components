@@ -117,7 +117,8 @@ export function ProfileProvider({ dbName, migrateProfile, debounceTimer = 1000, 
             // Migrate to latest version in case it's an old profile
             data = migrateProfile(data);
 
-            setProfiles(profiles => ([...profiles, name]));
+            if (!profiles.includes(name)) setProfiles(profiles => ([...profiles, name]));
+            if (name === currentProfile) setProfileData(data);
             await db.setItem(dbName, `profile-${name}`, data);
         } catch (e) {
             console.error(e.message);
