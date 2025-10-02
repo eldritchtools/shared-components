@@ -36,7 +36,7 @@ function Header(_ref) {
     },
     children: [/*#__PURE__*/_jsx("div", {
       children: /*#__PURE__*/_jsx("a", {
-        href: "https://eldritchtools.github.io/",
+        href: "https://eldritchtools.com/",
         children: /*#__PURE__*/_jsx("img", {
           src: logob64,
           alt: "logo",

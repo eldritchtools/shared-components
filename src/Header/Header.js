@@ -37,7 +37,7 @@ function Header({ title = null, lastUpdated = null }) {
             }}
         >
             <div>
-                <a href="https://eldritchtools.github.io/">
+                <a href="https://eldritchtools.com/">
                     <img src={logob64} alt="logo" width={32} height={32} style={{ borderRadius: "50%" }} />
                 </a>
             </div>
