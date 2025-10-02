@@ -88,9 +88,9 @@ export function ProfileProvider({ dbName, migrateProfile, debounceTimer = 1000, 
         }
     }
 
-    const importProfile = async (name, importedData, type = "base64") => {
+    const importProfile = async (name, importedData, type = "base64", overwrite=false) => {
         if (!name) return;
-        if (profiles.includes(name)) return;
+        if (!overwrite && profiles.includes(name)) return;
 
         try {
             let data;

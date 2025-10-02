@@ -262,6 +262,7 @@ export function ProfileProvider(_ref) {
   var importProfile = /*#__PURE__*/function () {
     var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(name, importedData) {
       var type,
+        overwrite,
         data,
         decoded,
         _args6 = arguments,
@@ -272,13 +273,14 @@ export function ProfileProvider(_ref) {
         while (1) switch (_context6.p = _context6.n) {
           case 0:
             type = _args6.length > 2 && _args6[2] !== undefined ? _args6[2] : "base64";
+            overwrite = _args6.length > 3 && _args6[3] !== undefined ? _args6[3] : false;
             if (name) {
               _context6.n = 1;
               break;
             }
             return _context6.a(2);
           case 1:
-            if (!profiles.includes(name)) {
+            if (!(!overwrite && profiles.includes(name))) {
               _context6.n = 2;
               break;
             }
