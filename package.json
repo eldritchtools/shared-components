@@ -9,8 +9,8 @@
         "build": "babel src --out-dir dist --extensions \".js,.jsx\""
     },
     "peerDependencies": {
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
+        "react": ">=19.0.0 <20.0.0",
+        "react-dom": ">=19.0.0 <20.0.0",
         "use-debounced-effect": "^2.0.1"
     },
     "devDependencies": {
