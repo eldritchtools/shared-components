@@ -87,7 +87,7 @@ function LinksComponent(_ref2) {
 var footerStyle = {
   width: "100%",
   boxSizing: "border-box",
-  borderTop: "1px solid #aaa",
+  borderTop: "1px solid #777",
   padding: "1rem 1rem",
   textAlign: "center",
   fontSize: "0.9rem",

@@ -1,0 +1,12 @@
+
+sidebar-button {
+  background-color: #070707;
+  color: #ddd;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+sidebar-button:hover {
+    background-color: #3a3a3a;
+}

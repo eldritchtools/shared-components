@@ -1,0 +1,14 @@
+.header-menu-item {
+    display: block;
+    padding: 8px 12px;
+    color: #ddd;
+    font-size: 1rem;
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+    width: auto;
+}
+
+.header-menu-item:hover {
+    background: #444;
+}

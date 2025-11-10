@@ -64,7 +64,7 @@ function LinksComponent({githubLink}) {
     </div>
 }
 
-const footerStyle = { width: "100%", boxSizing: "border-box", borderTop: "1px solid #aaa", padding: "1rem 1rem", textAlign: "center", fontSize: "0.9rem", color: "#ddd", background: "black" }
+const footerStyle = { width: "100%", boxSizing: "border-box", borderTop: "1px solid #777", padding: "1rem 1rem", textAlign: "center", fontSize: "0.9rem", color: "#ddd", background: "black" }
 
 function Footer({description, gameName, developerName, githubLink}) {
     return (

@@ -1,0 +1,16 @@
+.sidebarButton,
+.sidebarButton:link,
+.sidebarButton:visited,
+.sidebarButton:active {
+  background-color: #070707;
+  color: #ddd;
+  padding: 12px 16px;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sidebarButton:hover {
+    background-color: #3a3a3a;
+}

@@ -6,7 +6,8 @@
         "dist"
     ],
     "scripts": {
-        "build": "babel src --out-dir dist --extensions \".js,.jsx\""
+        "build": "babel src --out-dir dist --extensions \".js,.jsx\" && npm run copy-css",
+        "copy-css": "copyfiles -u 1 src/**/*.css dist/"
     },
     "peerDependencies": {
         "react": ">=19.0.0 <20.0.0",
@@ -17,7 +18,8 @@
         "@babel/cli": "^7.28.3",
         "@babel/core": "^7.28.3",
         "@babel/preset-env": "^7.28.3",
-        "@babel/preset-react": "^7.27.1"
+        "@babel/preset-react": "^7.27.1",
+        "copyfiles": "^2.4.1"
     },
     "babel": {
         "presets": [
