@@ -110,7 +110,7 @@ export default function Layout(_ref2) {
       style: {
         display: "flex",
         flexDirection: "column",
-        marginLeft: sidebarOpen ? "200px" : "0px",
+        marginLeft: sidebarOpen ? "240px" : "0px",
         overflowY: "auto",
         transition: "margin-left 0.3s ease"
       },
