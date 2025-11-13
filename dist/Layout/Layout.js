@@ -24,7 +24,7 @@ function Sidebar(_ref) {
       height: "calc(100vh - 48px)",
       overflowY: "auto",
       overflowX: "hidden",
-      width: "200px",
+      width: "240px",
       transition: "transform 0.3s ease",
       backgroundColor: "#070707",
       color: "#ddd",
