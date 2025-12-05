@@ -2,8 +2,9 @@ import { useState } from "react";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import { GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 
-function Sidebar({ open, paths, LinkComponent = "a", topComponent, bottomComponent }) {
+function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink }) {
     return (
         <div
             style={{
@@ -19,27 +20,33 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, bottomCompone
                 color: "#ddd",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
                 borderRight: open ? "1px #777 solid" : "transparent",
                 transform: open ? "translateX(0)" : "translateX(-100%)"
             }}
         >
-            <div style={{ marginTop: "20px", display: "flex", flexDirection: "column" }}>
-                {topComponent ? topComponent : null}
-                <nav style={{ display: "flex", flexDirection: "column" }}>
-                    {paths.map(path =>
-                        <LinkComponent className={styles.sidebarButton} key={path.path} href={path.path}>
-                            {path.title}
-                        </LinkComponent>)
-                    }
-                </nav>
+            {topComponent ? topComponent : null}
+            <nav style={{ display: "flex", flexDirection: "column" }}>
+                {paths.map(path =>
+                    <LinkComponent className={styles.sidebarButton} key={path.path} href={path.path}>
+                        {path.title}
+                    </LinkComponent>)
+                }
+            </nav>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: "1px #777 solid", gap: "0.5rem" }}>
+                <span style={{ marginTop: "1rem" }}>Follow / Contact / Support</span>
+                <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "0.5rem" }}>
+                    {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
+                    {/* <DiscordIcon /> */}
+                    <YoutubeIcon />
+                    <XIcon />
+                    <KoFiIcon />
+                </div>
             </div>
-            {bottomComponent ? bottomComponent : null}
         </div>
     );
 }
 
-export default function Layout({ title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null, githubLink = null, paths = [], LinkComponent = "a", topComponent, bottomComponent, children }) {
+export default function Layout({ title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null, githubLink = null, paths = [], LinkComponent = "a", topComponent, children }) {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     const sidebarButton = <button onClick={() => setSidebarOpen(prev => !prev)}>
@@ -48,7 +55,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <Header title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
-        <Sidebar open={sidebarOpen} paths={paths} LinkComponent={LinkComponent} topComponent={topComponent} bottomComponent={bottomComponent} />
+        <Sidebar open={sidebarOpen} paths={paths} LinkComponent={LinkComponent} githubLink={githubLink} topComponent={topComponent} />
         <div style={{ display: "flex", flexDirection: "column", marginLeft: sidebarOpen ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
             <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f", color: "white" }}>
                 {children}

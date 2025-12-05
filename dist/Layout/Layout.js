@@ -8,6 +8,7 @@ import { useState } from "react";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import { GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function Sidebar(_ref) {
   var open = _ref.open,
@@ -15,7 +16,7 @@ function Sidebar(_ref) {
     _ref$LinkComponent = _ref.LinkComponent,
     LinkComponent = _ref$LinkComponent === void 0 ? "a" : _ref$LinkComponent,
     topComponent = _ref.topComponent,
-    bottomComponent = _ref.bottomComponent;
+    githubLink = _ref.githubLink;
   return /*#__PURE__*/_jsxs("div", {
     style: {
       position: "fixed",
@@ -30,30 +31,46 @@ function Sidebar(_ref) {
       color: "#ddd",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-between",
       borderRight: open ? "1px #777 solid" : "transparent",
       transform: open ? "translateX(0)" : "translateX(-100%)"
     },
-    children: [/*#__PURE__*/_jsxs("div", {
+    children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx("nav", {
       style: {
-        marginTop: "20px",
         display: "flex",
         flexDirection: "column"
       },
-      children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx("nav", {
+      children: paths.map(function (path) {
+        return /*#__PURE__*/_jsx(LinkComponent, {
+          className: styles.sidebarButton,
+          href: path.path,
+          children: path.title
+        }, path.path);
+      })
+    }), /*#__PURE__*/_jsxs("div", {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        borderTop: "1px #777 solid",
+        gap: "0.5rem"
+      },
+      children: [/*#__PURE__*/_jsx("span", {
+        style: {
+          marginTop: "1rem"
+        },
+        children: "Follow / Contact / Support"
+      }), /*#__PURE__*/_jsxs("div", {
         style: {
           display: "flex",
-          flexDirection: "column"
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: "0.5rem"
         },
-        children: paths.map(function (path) {
-          return /*#__PURE__*/_jsx(LinkComponent, {
-            className: styles.sidebarButton,
-            href: path.path,
-            children: path.title
-          }, path.path);
-        })
+        children: [githubLink ? /*#__PURE__*/_jsx(GithubIcon, {
+          githubLink: githubLink
+        }) : null, /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiIcon, {})]
       })]
-    }), bottomComponent ? bottomComponent : null]
+    })]
   });
 }
 export default function Layout(_ref2) {
@@ -76,7 +93,6 @@ export default function Layout(_ref2) {
     _ref2$LinkComponent = _ref2.LinkComponent,
     LinkComponent = _ref2$LinkComponent === void 0 ? "a" : _ref2$LinkComponent,
     topComponent = _ref2.topComponent,
-    bottomComponent = _ref2.bottomComponent,
     children = _ref2.children;
   var _useState = useState(true),
     _useState2 = _slicedToArray(_useState, 2),
@@ -104,8 +120,8 @@ export default function Layout(_ref2) {
       open: sidebarOpen,
       paths: paths,
       LinkComponent: LinkComponent,
-      topComponent: topComponent,
-      bottomComponent: bottomComponent
+      githubLink: githubLink,
+      topComponent: topComponent
     }), /*#__PURE__*/_jsxs("div", {
       style: {
         display: "flex",
