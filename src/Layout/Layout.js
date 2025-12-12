@@ -3,6 +3,7 @@ import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
+import { Tooltip } from "react-tooltip";
 
 const ArrowIcon = ({ open }) => (
     <svg
@@ -20,6 +21,19 @@ const ArrowIcon = ({ open }) => (
     </svg>
 );
 
+function PathLink({ path, styleOverride, LinkComponent }) {
+    if ("tooltip" in path) {
+        return <div data-tooltip-id="sidebarNavTooltip" data-tooltip-content={path.tooltip} style={{ display: "flex", width: "100%", height: "auto" }}>
+            <LinkComponent className={styles.sidebarButton} style={{ ...styleOverride, width: "100%", height: "auto" }} href={path.path}>
+                {path.title}
+            </LinkComponent>
+        </div>
+    } else {
+        return <LinkComponent className={styles.sidebarButton} style={styleOverride} href={path.path}>
+            {path.title}
+        </LinkComponent>
+    }
+}
 
 function MultiPath({ path, LinkComponent }) {
     const [open, setOpen] = useState(false);
@@ -38,18 +52,13 @@ function MultiPath({ path, LinkComponent }) {
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <LinkComponent className={styles.sidebarButton} style={{ flex: 1 }} href={path.path}>
-                {path.title}
-            </LinkComponent>
+            <PathLink path={path} styleOverride={{ flex: 1 }} LinkComponent={LinkComponent} />
             <button style={toggleStyle} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}><ArrowIcon open={open} /></button>
         </div>
 
         <div style={{ display: open ? "flex" : "none", flexDirection: "column", paddingLeft: "16px" }}>
             {path.subpaths.map((subpath, i) =>
-                <LinkComponent key={i} className={styles.sidebarButton} href={subpath.path}
-                style={{fontSize: "1rem", fontWeight: "500", padding: "4px 6px"}}>
-                    {subpath.title}
-                </LinkComponent>
+                <PathLink key={i} path={subpath} styleOverride={{ fontSize: "1rem", fontWeight: "500", padding: "4px 6px" }} LinkComponent={LinkComponent} />
             )}
         </div>
     </div>
@@ -59,11 +68,9 @@ function Navigation({ paths, LinkComponent }) {
     return <nav style={{ display: "flex", flexDirection: "column" }}>
         {paths.map((path, i) => {
             if ("subpaths" in path) {
-                return <MultiPath key={i} path={path} LinkComponent={LinkComponent} />
+                return <MultiPath key={i} path={path} LinkComponent={LinkComponent} />;
             } else {
-                return <LinkComponent key={i} className={styles.sidebarButton} href={path.path}>
-                    {path.title}
-                </LinkComponent>;
+                return <PathLink key={i} path={path} LinkComponent={LinkComponent} />;
             }
         })}
     </nav>
@@ -121,5 +128,11 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
             </main>
             <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} />
         </div>
+
+        <Tooltip
+            id={"sidebarNavTooltip"}
+            render={({ content }) => <div style={{ whiteSpace: "pre-wrap" }}>{content}</div>}
+            style={{ outline: "1px #ddd solid", backgroundColor: "#000000", borderRadius: "1rem", zIndex: "9999" }}
+        />
     </div>
 }

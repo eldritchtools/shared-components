@@ -12,6 +12,7 @@
     "peerDependencies": {
         "react": ">=19.0.0 <20.0.0",
         "react-dom": ">=19.0.0 <20.0.0",
+        "react-tooltip": "^5.30.0",
         "use-debounced-effect": "^2.0.1"
     },
     "devDependencies": {
