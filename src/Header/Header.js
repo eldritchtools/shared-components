@@ -30,7 +30,7 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
             {linkSet in linkSets ? <HeaderDropdown name={linkSets[linkSet].name} links={linkSets[linkSet].links} /> : null}
         </div>
 
-        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", }}>{title}</h1>
+        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>{title}</h1>
 
         <div style={{ fontWeight: "normal", fontSize: "0.85rem", opacity: 0.75, textAlign: "right" }}>
             {lastUpdated ? `Last updated: ${formatLastUpdated(lastUpdated)}` : null}
@@ -64,7 +64,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
             </a>
         </div>
 
-        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", }}>{title}</h1>
+        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>{title}</h1>
 
         <div style={{ display: "relative" }}>
             <button onClick={() => setSubmenuOpen(!submenuOpen)}>

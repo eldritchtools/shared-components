@@ -67,7 +67,8 @@ function DesktopHeader(_ref) {
         fontWeight: "bold",
         position: "absolute",
         left: "50%",
-        transform: "translateX(-50%)"
+        transform: "translateX(-50%)",
+        textAlign: "center"
       },
       children: title
     }), /*#__PURE__*/_jsx("div", {
@@ -150,7 +151,8 @@ function MobileHeader(_ref3) {
         fontWeight: "bold",
         position: "absolute",
         left: "50%",
-        transform: "translateX(-50%)"
+        transform: "translateX(-50%)",
+        textAlign: "center"
       },
       children: title
     }), /*#__PURE__*/_jsxs("div", {
