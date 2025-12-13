@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { Tooltip } from "react-tooltip";
+import { useBreakpoint } from "../utils";
 
 const ArrowIcon = ({ open }) => (
     <svg
@@ -113,7 +114,17 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink })
 }
 
 export default function Layout({ title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null, githubLink = null, paths = [], LinkComponent = "a", topComponent, children }) {
+    const { isDesktop, ready } = useBreakpoint();
+    const initialized = useRef(false);
+
     const [sidebarOpen, setSidebarOpen] = useState(true);
+
+    useEffect(() => {
+        if (!ready || initialized.current) return;
+
+        setSidebarOpen(isDesktop);
+        initialized.current = true;
+    }, [ready, isDesktop]);
 
     const sidebarButton = <button onClick={() => setSidebarOpen(prev => !prev)}>
         ☰

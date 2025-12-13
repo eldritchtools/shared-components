@@ -10,12 +10,13 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { Tooltip } from "react-tooltip";
+import { useBreakpoint } from "../utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var ArrowIcon = function ArrowIcon(_ref) {
   var open = _ref.open;
@@ -232,10 +233,19 @@ export default function Layout(_ref6) {
     LinkComponent = _ref6$LinkComponent === void 0 ? "a" : _ref6$LinkComponent,
     topComponent = _ref6.topComponent,
     children = _ref6.children;
+  var _useBreakpoint = useBreakpoint(),
+    isDesktop = _useBreakpoint.isDesktop,
+    ready = _useBreakpoint.ready;
+  var initialized = useRef(false);
   var _useState3 = useState(true),
     _useState4 = _slicedToArray(_useState3, 2),
     sidebarOpen = _useState4[0],
     setSidebarOpen = _useState4[1];
+  useEffect(function () {
+    if (!ready || initialized.current) return;
+    setSidebarOpen(isDesktop);
+    initialized.current = true;
+  }, [ready, isDesktop]);
   var sidebarButton = /*#__PURE__*/_jsx("button", {
     onClick: function onClick() {
       return setSidebarOpen(function (prev) {

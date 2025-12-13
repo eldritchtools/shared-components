@@ -9,6 +9,7 @@ export default function HeaderDropdown({ name, links }) {
             style={{
                 position: "relative",
                 display: "inline-block",
+                padding: "6px 2px"
             }}
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
@@ -31,7 +32,12 @@ export default function HeaderDropdown({ name, links }) {
                     }}
                 >
                     {
-                        links.map((link, i) => <a href={`https://${link.subdomain}.eldritchtools.com`} key={i} className="header-menu-item">{link.name}</a>)
+                        links.map((link, i) =>
+                            <a key={i}
+                                href={`https://${link.subdomain}.eldritchtools.com`}
+                                className="header-menu-item"
+                                style={{ color: "#ddd", textDecoration: "none" }}
+                            >{link.name}</a>)
                     }
                 </div>
             )}
