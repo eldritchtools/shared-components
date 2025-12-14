@@ -38,10 +38,10 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
     </div>
 }
 
-function MoreIcon({ size = 18 }) {
+function MoreIcon({ size = 14 }) {
     return (
         <svg
-            width={size}
+            width={size*0.75}
             height={size}
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -56,7 +56,7 @@ function MoreIcon({ size = 18 }) {
 function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
     const [submenuOpen, setSubmenuOpen] = useState(false);
 
-    return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "1rem" }}>
+    return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "0.75rem", alignItems: "center" }}>
             {sidebarButton}
             <a href="https://eldritchtools.com/">
@@ -67,7 +67,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
         <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>{title}</h1>
 
         <div style={{ display: "relative" }}>
-            <button onClick={() => setSubmenuOpen(!submenuOpen)}>
+            <button onClick={() => setSubmenuOpen(!submenuOpen)} >
                 <MoreIcon />
             </button>
 

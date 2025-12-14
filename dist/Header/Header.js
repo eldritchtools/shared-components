@@ -84,9 +84,9 @@ function DesktopHeader(_ref) {
 }
 function MoreIcon(_ref2) {
   var _ref2$size = _ref2.size,
-    size = _ref2$size === void 0 ? 18 : _ref2$size;
+    size = _ref2$size === void 0 ? 14 : _ref2$size;
   return /*#__PURE__*/_jsxs("svg", {
-    width: size,
+    width: size * 0.75,
     height: size,
     viewBox: "0 0 24 24",
     fill: "currentColor",
@@ -122,8 +122,7 @@ function MobileHeader(_ref3) {
     style: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "space-between",
-      paddingRight: "1rem"
+      justifyContent: "space-between"
     },
     children: [/*#__PURE__*/_jsxs("div", {
       style: {
