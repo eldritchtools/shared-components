@@ -133,7 +133,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <Header title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
         <Sidebar open={sidebarOpen} paths={paths} LinkComponent={LinkComponent} githubLink={githubLink} topComponent={topComponent} />
-        <div style={{ display: "flex", flexDirection: "column", marginLeft: sidebarOpen ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
+        <div style={{ display: "flex", flexDirection: "column", marginLeft: (sidebarOpen && isDesktop) ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
             <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f", color: "white" }}>
                 {children}
             </main>

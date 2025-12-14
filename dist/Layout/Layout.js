@@ -274,7 +274,7 @@ export default function Layout(_ref6) {
       style: {
         display: "flex",
         flexDirection: "column",
-        marginLeft: sidebarOpen ? "240px" : "0px",
+        marginLeft: sidebarOpen && isDesktop ? "240px" : "0px",
         overflowY: "auto",
         transition: "margin-left 0.3s ease"
       },
