@@ -39,7 +39,8 @@ var ArrowIcon = function ArrowIcon(_ref) {
 function PathLink(_ref2) {
   var path = _ref2.path,
     styleOverride = _ref2.styleOverride,
-    LinkComponent = _ref2.LinkComponent;
+    LinkComponent = _ref2.LinkComponent,
+    closeSidebar = _ref2.closeSidebar;
   if ("tooltip" in path) {
     return /*#__PURE__*/_jsx("div", {
       "data-tooltip-id": "sidebarNavTooltip",
@@ -56,6 +57,7 @@ function PathLink(_ref2) {
           height: "auto"
         }),
         href: path.path,
+        onClick: closeSidebar,
         children: path.title
       })
     });
@@ -64,13 +66,15 @@ function PathLink(_ref2) {
       className: styles.sidebarButton,
       style: styleOverride,
       href: path.path,
+      onClick: closeSidebar,
       children: path.title
     });
   }
 }
 function MultiPath(_ref3) {
   var path = _ref3.path,
-    LinkComponent = _ref3.LinkComponent;
+    LinkComponent = _ref3.LinkComponent,
+    closeSidebar = _ref3.closeSidebar;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -102,7 +106,8 @@ function MultiPath(_ref3) {
         styleOverride: {
           flex: 1
         },
-        LinkComponent: LinkComponent
+        LinkComponent: LinkComponent,
+        closeSidebar: closeSidebar
       }), /*#__PURE__*/_jsx("button", {
         style: toggleStyle,
         onClick: function onClick(e) {
@@ -129,7 +134,8 @@ function MultiPath(_ref3) {
             fontWeight: "500",
             padding: "4px 6px"
           },
-          LinkComponent: LinkComponent
+          LinkComponent: LinkComponent,
+          closeSidebar: closeSidebar
         }, i);
       })
     })]
@@ -137,7 +143,8 @@ function MultiPath(_ref3) {
 }
 function Navigation(_ref4) {
   var paths = _ref4.paths,
-    LinkComponent = _ref4.LinkComponent;
+    LinkComponent = _ref4.LinkComponent,
+    closeSidebar = _ref4.closeSidebar;
   return /*#__PURE__*/_jsx("nav", {
     style: {
       display: "flex",
@@ -147,12 +154,14 @@ function Navigation(_ref4) {
       if ("subpaths" in path) {
         return /*#__PURE__*/_jsx(MultiPath, {
           path: path,
-          LinkComponent: LinkComponent
+          LinkComponent: LinkComponent,
+          closeSidebar: closeSidebar
         }, i);
       } else {
         return /*#__PURE__*/_jsx(PathLink, {
           path: path,
-          LinkComponent: LinkComponent
+          LinkComponent: LinkComponent,
+          closeSidebar: closeSidebar
         }, i);
       }
     })
@@ -164,7 +173,8 @@ function Sidebar(_ref5) {
     _ref5$LinkComponent = _ref5.LinkComponent,
     LinkComponent = _ref5$LinkComponent === void 0 ? "a" : _ref5$LinkComponent,
     topComponent = _ref5.topComponent,
-    githubLink = _ref5.githubLink;
+    githubLink = _ref5.githubLink,
+    closeSidebar = _ref5.closeSidebar;
   return /*#__PURE__*/_jsxs("div", {
     style: {
       position: "fixed",
@@ -180,11 +190,13 @@ function Sidebar(_ref5) {
       display: "flex",
       flexDirection: "column",
       borderRight: open ? "1px #777 solid" : "transparent",
-      transform: open ? "translateX(0)" : "translateX(-100%)"
+      transform: open ? "translateX(0)" : "translateX(-100%)",
+      zIndex: "1000"
     },
     children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {
       paths: paths,
-      LinkComponent: LinkComponent
+      LinkComponent: LinkComponent,
+      closeSidebar: closeSidebar
     }), /*#__PURE__*/_jsxs("div", {
       style: {
         display: "flex",
@@ -254,6 +266,9 @@ export default function Layout(_ref6) {
     },
     children: "\u2630"
   });
+  var closeSidebar = function closeSidebar() {
+    return setSidebarOpen(false);
+  };
   return /*#__PURE__*/_jsxs("div", {
     style: {
       display: "flex",
@@ -269,7 +284,8 @@ export default function Layout(_ref6) {
       paths: paths,
       LinkComponent: LinkComponent,
       githubLink: githubLink,
-      topComponent: topComponent
+      topComponent: topComponent,
+      closeSidebar: ready && !isDesktop ? closeSidebar : undefined
     }), /*#__PURE__*/_jsxs("div", {
       style: {
         display: "flex",
@@ -292,7 +308,15 @@ export default function Layout(_ref6) {
         developerName: developerName,
         githubLink: githubLink
       })]
-    }), /*#__PURE__*/_jsx(Tooltip, {
+    }), ready && !isDesktop && sidebarOpen ? /*#__PURE__*/_jsx("div", {
+      style: {
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.4)",
+        zIndex: "999"
+      },
+      onClick: closeSidebar
+    }) : null, /*#__PURE__*/_jsx(Tooltip, {
       id: "sidebarNavTooltip",
       render: function render(_ref7) {
         var content = _ref7.content;
