@@ -191,7 +191,7 @@ function Sidebar(_ref5) {
       flexDirection: "column",
       borderRight: open ? "1px #777 solid" : "transparent",
       transform: open ? "translateX(0)" : "translateX(-100%)",
-      zIndex: "1000"
+      zIndex: "999"
     },
     children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {
       paths: paths,
@@ -313,7 +313,7 @@ export default function Layout(_ref6) {
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.4)",
-        zIndex: "999"
+        zIndex: "998"
       },
       onClick: closeSidebar
     }) : null, /*#__PURE__*/_jsx(Tooltip, {

@@ -95,7 +95,7 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
                 flexDirection: "column",
                 borderRight: open ? "1px #777 solid" : "transparent",
                 transform: open ? "translateX(0)" : "translateX(-100%)",
-                zIndex: "1000"
+                zIndex: "999"
             }}
         >
             {topComponent ? topComponent : null}
@@ -142,7 +142,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
             </main>
             <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} />
         </div>
-        {(ready && !isDesktop && sidebarOpen) ? <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: "999" }} onClick={closeSidebar} /> : null}
+        {(ready && !isDesktop && sidebarOpen) ? <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: "998" }} onClick={closeSidebar} /> : null}
 
         <Tooltip
             id={"sidebarNavTooltip"}
