@@ -28,7 +28,7 @@ export default function HeaderDropdown({ name, links }) {
                         padding: "6px 0",
                         minWidth: "160px",
                         width: "auto",
-                        zIndex: 100,
+                        zIndex: 1001,
                     }}
                 >
                     {

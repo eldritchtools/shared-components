@@ -41,7 +41,7 @@ export default function HeaderDropdown(_ref) {
         padding: "6px 0",
         minWidth: "160px",
         width: "auto",
-        zIndex: 100
+        zIndex: 1001
       },
       children: links.map(function (link, i) {
         return /*#__PURE__*/_jsx("a", {
