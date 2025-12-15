@@ -225,7 +225,7 @@ function Sidebar(_ref5) {
           fontSize: "0.8rem",
           textAlign: "center"
         },
-        children: "Site updates & announcements on Discord."
+        children: "Site updates and community feedback on Discord."
       })]
     })]
   });
