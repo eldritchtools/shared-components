@@ -222,7 +222,8 @@ function Sidebar(_ref5) {
         }) : null, /*#__PURE__*/_jsx(DiscordIcon, {}), /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiIcon, {})]
       }), /*#__PURE__*/_jsx("span", {
         style: {
-          fontSize: "0.8rem"
+          fontSize: "0.8rem",
+          textAlign: "center"
         },
         children: "Site updates & announcements on Discord."
       })]
