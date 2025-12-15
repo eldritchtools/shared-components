@@ -223,7 +223,8 @@ function Sidebar(_ref5) {
       }), /*#__PURE__*/_jsx("span", {
         style: {
           fontSize: "0.8rem",
-          textAlign: "center"
+          textAlign: "center",
+          width: "80%"
         },
         children: "Site updates and community feedback on Discord."
       })]
