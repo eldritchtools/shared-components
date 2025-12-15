@@ -35,7 +35,7 @@ function GithubIcon(_ref) {
 }
 function DiscordIcon() {
   return /*#__PURE__*/_jsx("a", {
-    href: "",
+    href: "https://discord.gg/XpfdBvwN",
     target: "_blank",
     rel: "noopener noreferrer",
     style: _objectSpread(_objectSpread({}, iconStyle), {}, {

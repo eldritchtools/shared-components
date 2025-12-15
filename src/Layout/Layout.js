@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
+import { DiscordIcon, GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { Tooltip } from "react-tooltip";
 import { useBreakpoint } from "../utils";
 
@@ -104,11 +104,12 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
                 <span style={{ marginTop: "1rem" }}>Follow / Contact / Support</span>
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "0.5rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
-                    {/* <DiscordIcon /> */}
+                    <DiscordIcon />
                     <YoutubeIcon />
                     <XIcon />
                     <KoFiIcon />
                 </div>
+                <span style={{ fontSize: "0.8rem" }}>Site updates & announcements on Discord.</span>
             </div>
         </div>
     );

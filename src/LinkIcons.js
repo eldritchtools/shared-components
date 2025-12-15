@@ -24,7 +24,7 @@ function GithubIcon({ githubLink }) {
 }
 
 function DiscordIcon() {
-    return <a href="" target="_blank" rel="noopener noreferrer" style={{ ...iconStyle, color: '#5865F2' }} title="Discord" >
+    return <a href="https://discord.gg/XpfdBvwN" target="_blank" rel="noopener noreferrer" style={{ ...iconStyle, color: '#5865F2' }} title="Discord" >
         <FaDiscord />
     </a>
 }

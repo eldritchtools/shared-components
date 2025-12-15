@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
+import { DiscordIcon, GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { Tooltip } from "react-tooltip";
 import { useBreakpoint } from "../utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
@@ -219,7 +219,12 @@ function Sidebar(_ref5) {
         },
         children: [githubLink ? /*#__PURE__*/_jsx(GithubIcon, {
           githubLink: githubLink
-        }) : null, /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiIcon, {})]
+        }) : null, /*#__PURE__*/_jsx(DiscordIcon, {}), /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiIcon, {})]
+      }), /*#__PURE__*/_jsx("span", {
+        style: {
+          fontSize: "0.8rem"
+        },
+        children: "Site updates & announcements on Discord."
       })]
     })]
   });
