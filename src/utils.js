@@ -17,4 +17,9 @@ function useBreakpoint() {
     return { isDesktop, isTablet, isMobile, ready: width !== null };
 }
 
-export { useBreakpoint };
+function isTouchDevice() {
+    return typeof window !== "undefined" &&
+        matchMedia("(hover: none) and (pointer: coarse)").matches;
+}
+
+export { useBreakpoint, isTouchDevice };
