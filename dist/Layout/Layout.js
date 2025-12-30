@@ -226,7 +226,7 @@ function Sidebar(_ref5) {
           textAlign: "center",
           width: "80%"
         },
-        children: "Site updates and community feedback on Discord."
+        children: "Join the Discord for updates, bug reports, and feedback."
       })]
     })]
   });

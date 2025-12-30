@@ -109,7 +109,7 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
                     <XIcon />
                     <KoFiIcon />
                 </div>
-                <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Site updates and community feedback on Discord.</span>
+                <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join the Discord for updates, bug reports, and feedback.</span>
             </div>
         </div>
     );
