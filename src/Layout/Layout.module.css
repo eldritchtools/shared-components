@@ -12,5 +12,10 @@
 }
 
 .sidebarButton:hover {
-    background-color: #3a3a3a;
+  background-color: #3a3a3a;
+}
+
+.sidebarButton:visited,
+.sidebarButton:hover:visited {
+  color: #ddd;
 }
