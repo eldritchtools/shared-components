@@ -1,6 +1,7 @@
 import { FaGithub, FaYoutube, FaDiscord } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 import KofiIconSvg from './KofiIconSvg';
+import { useEffect, useState } from 'react';
 
 const iconStyle = {
     display: 'inline-flex',
@@ -24,7 +25,34 @@ function GithubIcon({ githubLink }) {
 }
 
 function DiscordIcon() {
-    return <a href="https://discord.gg/XpfdBvwN" target="_blank" rel="noopener noreferrer" style={{ ...iconStyle, color: '#5865F2' }} title="Discord" >
+    const [url, setUrl] = useState(null);
+
+    useEffect(() => {
+        let attempt = 0;
+        const fetchData = async () => {
+            try {
+                const response = await fetch("https://shared.eldritchtools.com/links.json");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.json();
+                setUrl(result.discord);
+            } catch (error) {
+                if (attempt < 5) {
+                    attempt++;
+                    const delay = retryDelay * Math.pow(2, attempt - 1);
+                    setTimeout(fetchData, delay);
+                } else {
+                    console.error(error.message);
+                }
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (!url) return null;
+    return <a href={url} target="_blank" rel="noopener noreferrer" style={{ ...iconStyle, color: '#5865F2' }} title="Discord" >
         <FaDiscord />
     </a>
 }
