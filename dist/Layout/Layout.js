@@ -334,7 +334,7 @@ export default function Layout(_ref6) {
   var closeSidebar = function closeSidebar() {
     return setSidebarOpen(false);
   };
-  var linksetObject = sharedUrls && linkSet in sharedUrls.linksets ? sharedUrls.linksets[linkSet] : null;
+  var linksetObject = "linksets" in sharedUrls && linkSet in sharedUrls.linksets ? sharedUrls.linksets[linkSet] : null;
   return /*#__PURE__*/_jsxs("div", {
     style: {
       display: "flex",

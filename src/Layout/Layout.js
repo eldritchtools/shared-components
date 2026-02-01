@@ -161,7 +161,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
     </button>
 
     const closeSidebar = () => setSidebarOpen(false);
-    const linksetObject = sharedUrls && linkSet in sharedUrls.linksets ? sharedUrls.linksets[linkSet] : null
+    const linksetObject = "linksets" in sharedUrls && linkSet in sharedUrls.linksets ? sharedUrls.linksets[linkSet] : null
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <Header title={title} linkSet={linksetObject} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
