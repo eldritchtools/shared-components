@@ -21,6 +21,7 @@ import Footer from "../Footer/Footer";
 import { DiscordIcon, GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { Tooltip } from "react-tooltip";
 import { useBreakpoint } from "../utils";
+import { linksets } from "../linksets";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 var ArrowIcon = function ArrowIcon(_ref) {
   var open = _ref.open;
@@ -334,7 +335,9 @@ export default function Layout(_ref6) {
   var closeSidebar = function closeSidebar() {
     return setSidebarOpen(false);
   };
-  var linksetObject = "linksets" in sharedUrls && linkSet in sharedUrls.linksets ? sharedUrls.linksets[linkSet] : null;
+  // Temp default linksets to deal with cached links.json in R2
+  var linksetSource = sharedUrls.linksets || linksets;
+  var linksetObject = linkSet in linksetSource ? linksetSource[linkSet] : null;
   return /*#__PURE__*/_jsxs("div", {
     style: {
       display: "flex",

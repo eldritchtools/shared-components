@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import { DiscordIcon, GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { Tooltip } from "react-tooltip";
 import { useBreakpoint } from "../utils";
+import { linksets } from "../linksets";
 
 const ArrowIcon = ({ open }) => (
     <svg
@@ -161,7 +162,9 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
     </button>
 
     const closeSidebar = () => setSidebarOpen(false);
-    const linksetObject = "linksets" in sharedUrls && linkSet in sharedUrls.linksets ? sharedUrls.linksets[linkSet] : null
+    // Temp default linksets to deal with cached links.json in R2
+    const linksetSource = sharedUrls.linksets || linksets;
+    const linksetObject = linkSet in linksetSource ? linksetSource[linkSet] : null
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <Header title={title} linkSet={linksetObject} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
