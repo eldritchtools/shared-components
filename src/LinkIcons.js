@@ -24,34 +24,7 @@ function GithubIcon({ githubLink }) {
     </a>;
 }
 
-function DiscordIcon() {
-    const [url, setUrl] = useState(null);
-
-    useEffect(() => {
-        let attempt = 0;
-        const fetchData = async () => {
-            try {
-                const response = await fetch("https://shared.eldritchtools.com/links.json");
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const result = await response.json();
-                setUrl(result.discord);
-            } catch (error) {
-                if (attempt < 5) {
-                    attempt++;
-                    const delay = retryDelay * Math.pow(2, attempt - 1);
-                    setTimeout(fetchData, delay);
-                } else {
-                    console.error(error.message);
-                }
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    if (!url) return null;
+function DiscordIcon({ url }) {
     return <a href={url} target="_blank" rel="noopener noreferrer" style={{ ...iconStyle, color: '#5865F2' }} title="Discord" >
         <FaDiscord />
     </a>

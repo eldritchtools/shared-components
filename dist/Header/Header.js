@@ -4,8 +4,7 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-import React, { useState } from "react";
-import linkSets from "./headerLinkSets";
+import { useState } from "react";
 import HeaderDropdown from "./HeaderDropdown";
 import { useBreakpoint } from "../utils";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
@@ -56,9 +55,9 @@ function DesktopHeader(_ref) {
             borderRadius: "50%"
           }
         })
-      }), linkSet in linkSets ? /*#__PURE__*/_jsx(HeaderDropdown, {
-        name: linkSets[linkSet].name,
-        links: linkSets[linkSet].links
+      }), linkSet ? /*#__PURE__*/_jsx(HeaderDropdown, {
+        name: linkSet.name,
+        links: linkSet.links
       }) : null]
     }), /*#__PURE__*/_jsx("h1", {
       style: {
@@ -175,9 +174,9 @@ function MobileHeader(_ref3) {
           boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
           zIndex: 1001
         },
-        children: [linkSet in linkSets ? /*#__PURE__*/_jsx(HeaderDropdown, {
-          name: linkSets[linkSet].name,
-          links: linkSets[linkSet].links
+        children: [linkSet ? /*#__PURE__*/_jsx(HeaderDropdown, {
+          name: linkSet.name,
+          links: linkSet.links
         }) : null, /*#__PURE__*/_jsx("div", {
           style: {
             fontWeight: "normal",

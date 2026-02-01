@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import linkSets from "./headerLinkSets";
+import { useState } from "react";
 import HeaderDropdown from "./HeaderDropdown";
 import { useBreakpoint } from "../utils";
 
@@ -27,7 +26,7 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
             <a href="https://eldritchtools.com/">
                 <img src={logob64} alt="logo" width={32} height={32} style={{ borderRadius: "50%" }} />
             </a>
-            {linkSet in linkSets ? <HeaderDropdown name={linkSets[linkSet].name} links={linkSets[linkSet].links} /> : null}
+            {linkSet ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
         </div>
 
         <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>{title}</h1>
@@ -83,7 +82,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
                     boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
                     zIndex: 1001
                 }}>
-                    {linkSet in linkSets ? <HeaderDropdown name={linkSets[linkSet].name} links={linkSets[linkSet].links} /> : null}
+                    {linkSet ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
                     <div style={{ fontWeight: "normal", fontSize: "0.85rem", opacity: 0.75, textAlign: "right" }}>
                         {lastUpdated ? `Last updated: ${formatLastUpdated(lastUpdated)}` : null}
                     </div>

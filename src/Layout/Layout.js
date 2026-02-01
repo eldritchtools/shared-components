@@ -77,7 +77,7 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
     </nav>
 }
 
-function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar }) {
+function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls }) {
     return (
         <div
             style={{
@@ -104,12 +104,15 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
                 <span style={{ marginTop: "1rem" }}>Follow / Contact / Support</span>
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "0.5rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
-                    <DiscordIcon />
+                    {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
                     <YoutubeIcon />
                     <XIcon />
                     <KoFiIcon />
                 </div>
-                <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join the Discord for updates, bug reports, suggestions, and feedback.</span>
+                {"discord" in sharedUrls ?
+                    <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join the Discord for updates, bug reports, suggestions, and feedback.</span> :
+                    null
+                }
             </div>
         </div>
     );
@@ -120,6 +123,31 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
     const initialized = useRef(false);
 
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sharedUrls, setSharedUrls] = useState({});
+
+    useEffect(() => {
+        let attempt = 0;
+        const fetchData = async () => {
+            try {
+                const response = await fetch("https://shared.eldritchtools.com/links.json");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.json();
+                setSharedUrls(result);
+            } catch (error) {
+                if (attempt < 5) {
+                    attempt++;
+                    const delay = retryDelay * Math.pow(2, attempt - 1);
+                    setTimeout(fetchData, delay);
+                } else {
+                    console.error(error.message);
+                }
+            }
+        };
+
+        fetchData();
+    }, []);
 
     useEffect(() => {
         if (!ready || initialized.current) return;
@@ -133,10 +161,19 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
     </button>
 
     const closeSidebar = () => setSidebarOpen(false);
+    const linksetObject = sharedUrls && linkSet in sharedUrls.linksets ? sharedUrls.linksets[linkSet] : null
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
-        <Header title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
-        <Sidebar open={sidebarOpen} paths={paths} LinkComponent={LinkComponent} githubLink={githubLink} topComponent={topComponent} closeSidebar={(ready && !isDesktop) ? closeSidebar : undefined} />
+        <Header title={title} linkSet={linksetObject} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
+        <Sidebar
+            open={sidebarOpen}
+            paths={paths}
+            LinkComponent={LinkComponent}
+            githubLink={githubLink}
+            topComponent={topComponent}
+            closeSidebar={(ready && !isDesktop) ? closeSidebar : undefined}
+            sharedUrls={sharedUrls}
+        />
         <div style={{ display: "flex", flexDirection: "column", marginLeft: (sidebarOpen && isDesktop) ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
             <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f", color: "white" }}>
                 {children}
