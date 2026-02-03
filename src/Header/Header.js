@@ -82,7 +82,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
                     boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
                     zIndex: 1001
                 }}>
-                    {linkSet ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
+                    {linkSet && linkSet.links.length > 1 ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
                     <div style={{ fontWeight: "normal", fontSize: "0.85rem", opacity: 0.75, textAlign: "right" }}>
                         {lastUpdated ? `Last updated: ${formatLastUpdated(lastUpdated)}` : null}
                     </div>

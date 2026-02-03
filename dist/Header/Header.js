@@ -174,7 +174,7 @@ function MobileHeader(_ref3) {
           boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
           zIndex: 1001
         },
-        children: [linkSet ? /*#__PURE__*/_jsx(HeaderDropdown, {
+        children: [linkSet && linkSet.links.length > 1 ? /*#__PURE__*/_jsx(HeaderDropdown, {
           name: linkSet.name,
           links: linkSet.links
         }) : null, /*#__PURE__*/_jsx("div", {
