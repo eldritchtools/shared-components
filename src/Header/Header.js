@@ -26,7 +26,7 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
             <a href="https://eldritchtools.com/">
                 <img src={logob64} alt="logo" width={32} height={32} style={{ borderRadius: "50%" }} />
             </a>
-            {linkSet ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
+            {linkSet && linkSet.links.length > 1 ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
         </div>
 
         <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>{title}</h1>

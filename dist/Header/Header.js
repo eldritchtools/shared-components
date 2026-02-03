@@ -55,7 +55,7 @@ function DesktopHeader(_ref) {
             borderRadius: "50%"
           }
         })
-      }), linkSet ? /*#__PURE__*/_jsx(HeaderDropdown, {
+      }), linkSet && linkSet.links.length > 1 ? /*#__PURE__*/_jsx(HeaderDropdown, {
         name: linkSet.name,
         links: linkSet.links
       }) : null]
