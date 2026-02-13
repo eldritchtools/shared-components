@@ -303,7 +303,7 @@ export default function Layout(_ref6) {
               _t = _context.v;
               if (attempt < 5) {
                 attempt++;
-                delay = retryDelay * Math.pow(2, attempt - 1);
+                delay = 1000 * Math.pow(2, attempt - 1);
                 setTimeout(_fetchData, delay);
               } else {
                 console.error(_t.message);

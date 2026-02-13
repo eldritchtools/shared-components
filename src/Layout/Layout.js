@@ -139,7 +139,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
             } catch (error) {
                 if (attempt < 5) {
                     attempt++;
-                    const delay = retryDelay * Math.pow(2, attempt - 1);
+                    const delay = 1000 * Math.pow(2, attempt - 1);
                     setTimeout(fetchData, delay);
                 } else {
                     console.error(error.message);
