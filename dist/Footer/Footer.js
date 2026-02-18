@@ -1,4 +1,4 @@
-import { DiscordIcon, GithubIcon, KoFiButton, XIcon, YoutubeIcon } from "../LinkIcons";
+import { DiscordIcon, EmailIcon, GithubIcon, KoFiButton, XIcon, YoutubeIcon } from "../LinkIcons";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function LinksComponent(_ref) {
   var githubLink = _ref.githubLink;
@@ -8,7 +8,7 @@ function LinksComponent(_ref) {
       justifyContent: "center",
       gap: "1rem"
     },
-    children: [/*#__PURE__*/_jsx(GithubIcon, {
+    children: [/*#__PURE__*/_jsx(EmailIcon, {}), /*#__PURE__*/_jsx(GithubIcon, {
       githubLink: githubLink
     }), /*#__PURE__*/_jsx(DiscordIcon, {}), /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiButton, {})]
   });

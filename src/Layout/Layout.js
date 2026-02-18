@@ -102,16 +102,13 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
             {topComponent ? topComponent : null}
             <Navigation paths={paths} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: "1px #777 solid", gap: "0.5rem" }}>
-                <span style={{ marginTop: "1rem" }}>Follow / Contact / Support</span>
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "0.5rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
                     {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
-                    <YoutubeIcon />
-                    <XIcon />
                     <KoFiIcon />
                 </div>
                 {"discord" in sharedUrls ?
-                    <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join the Discord for updates, bug reports, suggestions, and feedback.</span> :
+                    <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join the Discord for updates, bug reports, and feedback. You can also hang out and chat with others in the community.</span> :
                     null
                 }
             </div>

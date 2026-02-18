@@ -1,4 +1,4 @@
-import { FaGithub, FaYoutube, FaDiscord } from 'react-icons/fa';
+import { FaGithub, FaYoutube, FaDiscord, FaEnvelope } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 import KofiIconSvg from './KofiIconSvg';
 
@@ -16,6 +16,12 @@ const iconStyle = {
     textDecoration: 'none',
     transition: 'transform 0.2s ease',
 };
+
+function EmailIcon() {
+    return <a href="mailto:contact@eldritchtools.com" style={iconStyle} title="Email" >
+        <FaEnvelope />
+    </a>;
+}
 
 function GithubIcon({ githubLink }) {
     return <a href={githubLink} target="_blank" rel="noopener noreferrer" style={iconStyle} title="GitHub Repo" >
@@ -53,4 +59,4 @@ function KoFiIcon() {
     </a>
 }
 
-export { GithubIcon, DiscordIcon, YoutubeIcon, XIcon, KoFiButton, KoFiIcon };
+export { EmailIcon, GithubIcon, DiscordIcon, YoutubeIcon, XIcon, KoFiButton, KoFiIcon };

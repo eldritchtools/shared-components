@@ -211,12 +211,7 @@ function Sidebar(_ref5) {
         borderTop: "1px #777 solid",
         gap: "0.5rem"
       },
-      children: [/*#__PURE__*/_jsx("span", {
-        style: {
-          marginTop: "1rem"
-        },
-        children: "Follow / Contact / Support"
-      }), /*#__PURE__*/_jsxs("div", {
+      children: [/*#__PURE__*/_jsxs("div", {
         style: {
           display: "flex",
           justifyContent: "center",
@@ -227,14 +222,14 @@ function Sidebar(_ref5) {
           githubLink: githubLink
         }) : null, "discord" in sharedUrls ? /*#__PURE__*/_jsx(DiscordIcon, {
           url: sharedUrls["discord"]
-        }) : null, /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiIcon, {})]
+        }) : null, /*#__PURE__*/_jsx(KoFiIcon, {})]
       }), "discord" in sharedUrls ? /*#__PURE__*/_jsx("span", {
         style: {
           fontSize: "0.8rem",
           textAlign: "center",
           width: "80%"
         },
-        children: "Join the Discord for updates, bug reports, suggestions, and feedback."
+        children: "Join the Discord for updates, bug reports, and feedback. You can also hang out and chat with others in the community."
       }) : null]
     })]
   });
