@@ -18,7 +18,7 @@ const iconStyle = {
 };
 
 function EmailIcon() {
-    return <a href="mailto:contact@eldritchtools.com" style={iconStyle} title="Email" >
+    return <a href="mailto:contact@eldritchtools.com" style={{ ...iconStyle, color: "#4B5563" }} title="Email" >
         <FaEnvelope />
     </a>;
 }

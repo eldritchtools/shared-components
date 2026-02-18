@@ -25,7 +25,9 @@ var iconStyle = {
 function EmailIcon() {
   return /*#__PURE__*/_jsx("a", {
     href: "mailto:contact@eldritchtools.com",
-    style: iconStyle,
+    style: _objectSpread(_objectSpread({}, iconStyle), {}, {
+      color: "#4B5563"
+    }),
     title: "Email",
     children: /*#__PURE__*/_jsx(FaEnvelope, {})
   });
