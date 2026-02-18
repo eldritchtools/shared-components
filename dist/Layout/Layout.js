@@ -216,7 +216,8 @@ function Sidebar(_ref5) {
           display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
-          gap: "0.5rem"
+          gap: "1rem",
+          marginTop: "1rem"
         },
         children: [githubLink ? /*#__PURE__*/_jsx(GithubIcon, {
           githubLink: githubLink
@@ -229,7 +230,7 @@ function Sidebar(_ref5) {
           textAlign: "center",
           width: "80%"
         },
-        children: "Join the Discord for updates, bug reports, and feedback. You can also hang out and chat with others in the community."
+        children: "Join our Discord for updates and feedback, or just to chat."
       }) : null]
     })]
   });
