@@ -19,7 +19,7 @@ function formatLastUpdated(isoString) {
     });
 }
 
-function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
+function DesktopHeader({ title = null, rootPath = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
     return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "1rem" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "0.75rem", alignItems: "center" }}>
             {sidebarButton}
@@ -29,7 +29,11 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
             {linkSet && linkSet.links.length > 1 ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
         </div>
 
-        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>{title}</h1>
+        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
+            <a href={rootPath} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
+                {title}
+            </a>
+        </h1>
 
         <div style={{ fontWeight: "normal", fontSize: "0.85rem", opacity: 0.75, textAlign: "right" }}>
             {lastUpdated ? `Last updated: ${formatLastUpdated(lastUpdated)}` : null}
@@ -40,7 +44,7 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
 function MoreIcon({ size = 14 }) {
     return (
         <svg
-            width={size*0.75}
+            width={size * 0.75}
             height={size}
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -52,7 +56,7 @@ function MoreIcon({ size = 14 }) {
     );
 }
 
-function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
+function MobileHeader({ title = null, rootPath = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
     const [submenuOpen, setSubmenuOpen] = useState(false);
 
     return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -63,7 +67,11 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
             </a>
         </div>
 
-        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>{title}</h1>
+        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
+            <a href={rootPath} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
+                {title}
+            </a>
+        </h1>
 
         <div style={{ display: "relative" }}>
             <button onClick={() => setSubmenuOpen(!submenuOpen)} >
@@ -93,7 +101,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
     </div>
 }
 
-function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
+function Header({ title = null, rootPath = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
     const { isDesktop, ready } = useBreakpoint();
 
     return (
@@ -112,8 +120,8 @@ function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButto
         >
             {ready ? (
                 isDesktop ?
-                    <DesktopHeader title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} /> :
-                    <MobileHeader title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
+                    <DesktopHeader title={title} rootPath={rootPath} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} /> :
+                    <MobileHeader title={title} rootPath={rootPath} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
             ) : null}
 
         </header>

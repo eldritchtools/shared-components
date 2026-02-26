@@ -116,7 +116,7 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
     );
 }
 
-export default function Layout({ title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null, githubLink = null, paths = [], LinkComponent = "a", topComponent, children }) {
+export default function Layout({ title = null, rootPath = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null, githubLink = null, paths = [], LinkComponent = "a", topComponent, children }) {
     const { isDesktop, ready } = useBreakpoint();
     const initialized = useRef(false);
 
@@ -164,7 +164,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
     const linksetObject = linkSet in linksetSource ? linksetSource[linkSet] : null
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
-        <Header title={title} linkSet={linksetObject} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
+        <Header title={title} rootPath={rootPath} linkSet={linksetObject} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
         <Sidebar
             open={sidebarOpen}
             paths={paths}
