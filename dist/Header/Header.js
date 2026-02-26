@@ -24,8 +24,6 @@ function formatLastUpdated(isoString) {
 function DesktopHeader(_ref) {
   var _ref$title = _ref.title,
     title = _ref$title === void 0 ? null : _ref$title,
-    _ref$rootPath = _ref.rootPath,
-    rootPath = _ref$rootPath === void 0 ? null : _ref$rootPath,
     _ref$linkSet = _ref.linkSet,
     linkSet = _ref$linkSet === void 0 ? null : _ref$linkSet,
     _ref$lastUpdated = _ref.lastUpdated,
@@ -72,7 +70,7 @@ function DesktopHeader(_ref) {
         textAlign: "center"
       },
       children: /*#__PURE__*/_jsx("a", {
-        href: rootPath,
+        href: "/",
         style: {
           color: "#ddd",
           textDecoration: "none",
@@ -117,8 +115,6 @@ function MoreIcon(_ref2) {
 function MobileHeader(_ref3) {
   var _ref3$title = _ref3.title,
     title = _ref3$title === void 0 ? null : _ref3$title,
-    _ref3$rootPath = _ref3.rootPath,
-    rootPath = _ref3$rootPath === void 0 ? null : _ref3$rootPath,
     _ref3$linkSet = _ref3.linkSet,
     linkSet = _ref3$linkSet === void 0 ? null : _ref3$linkSet,
     _ref3$lastUpdated = _ref3.lastUpdated,
@@ -165,7 +161,7 @@ function MobileHeader(_ref3) {
         textAlign: "center"
       },
       children: /*#__PURE__*/_jsx("a", {
-        href: rootPath,
+        href: "/",
         style: {
           color: "#ddd",
           textDecoration: "none",
@@ -213,8 +209,6 @@ function MobileHeader(_ref3) {
 function Header(_ref4) {
   var _ref4$title = _ref4.title,
     title = _ref4$title === void 0 ? null : _ref4$title,
-    _ref4$rootPath = _ref4.rootPath,
-    rootPath = _ref4$rootPath === void 0 ? null : _ref4$rootPath,
     _ref4$linkSet = _ref4.linkSet,
     linkSet = _ref4$linkSet === void 0 ? null : _ref4$linkSet,
     _ref4$lastUpdated = _ref4.lastUpdated,
@@ -238,13 +232,11 @@ function Header(_ref4) {
     },
     children: ready ? isDesktop ? /*#__PURE__*/_jsx(DesktopHeader, {
       title: title,
-      rootPath: rootPath,
       linkSet: linkSet,
       lastUpdated: lastUpdated,
       sidebarButton: sidebarButton
     }) : /*#__PURE__*/_jsx(MobileHeader, {
       title: title,
-      rootPath: rootPath,
       linkSet: linkSet,
       lastUpdated: lastUpdated,
       sidebarButton: sidebarButton

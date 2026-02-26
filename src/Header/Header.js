@@ -19,7 +19,7 @@ function formatLastUpdated(isoString) {
     });
 }
 
-function DesktopHeader({ title = null, rootPath = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
+function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
     return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "1rem" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "0.75rem", alignItems: "center" }}>
             {sidebarButton}
@@ -30,7 +30,7 @@ function DesktopHeader({ title = null, rootPath = null, linkSet = null, lastUpda
         </div>
 
         <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
-            <a href={rootPath} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
+            <a href={"/"} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
                 {title}
             </a>
         </h1>
@@ -56,7 +56,7 @@ function MoreIcon({ size = 14 }) {
     );
 }
 
-function MobileHeader({ title = null, rootPath = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
+function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
     const [submenuOpen, setSubmenuOpen] = useState(false);
 
     return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -68,7 +68,7 @@ function MobileHeader({ title = null, rootPath = null, linkSet = null, lastUpdat
         </div>
 
         <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
-            <a href={rootPath} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
+            <a href={"/"} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
                 {title}
             </a>
         </h1>
@@ -101,7 +101,7 @@ function MobileHeader({ title = null, rootPath = null, linkSet = null, lastUpdat
     </div>
 }
 
-function Header({ title = null, rootPath = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
+function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
     const { isDesktop, ready } = useBreakpoint();
 
     return (
@@ -120,8 +120,8 @@ function Header({ title = null, rootPath = null, linkSet = null, lastUpdated = n
         >
             {ready ? (
                 isDesktop ?
-                    <DesktopHeader title={title} rootPath={rootPath} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} /> :
-                    <MobileHeader title={title} rootPath={rootPath} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
+                    <DesktopHeader title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} /> :
+                    <MobileHeader title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
             ) : null}
 
         </header>
