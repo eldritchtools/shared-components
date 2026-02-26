@@ -238,6 +238,8 @@ function Sidebar(_ref5) {
 export default function Layout(_ref6) {
   var _ref6$title = _ref6.title,
     title = _ref6$title === void 0 ? null : _ref6$title,
+    _ref6$rootPath = _ref6.rootPath,
+    rootPath = _ref6$rootPath === void 0 ? null : _ref6$rootPath,
     _ref6$linkSet = _ref6.linkSet,
     linkSet = _ref6$linkSet === void 0 ? null : _ref6$linkSet,
     _ref6$lastUpdated = _ref6.lastUpdated,
@@ -341,6 +343,7 @@ export default function Layout(_ref6) {
     },
     children: [/*#__PURE__*/_jsx(Header, {
       title: title,
+      rootPath: rootPath,
       linkSet: linksetObject,
       lastUpdated: lastUpdated,
       sidebarButton: sidebarButton
