@@ -175,7 +175,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
             sharedUrls={sharedUrls}
         />
         <div style={{ display: "flex", flexDirection: "column", marginLeft: (sidebarOpen && isDesktop) ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
-            <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f", color: "white" }}>
+            <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f" }}>
                 {children}
             </main>
             <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} />

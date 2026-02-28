@@ -364,8 +364,7 @@ export default function Layout(_ref6) {
         style: {
           minHeight: "calc(100vh - 48px)",
           padding: "20px",
-          backgroundColor: "#1f1f1f",
-          color: "white"
+          backgroundColor: "#1f1f1f"
         },
         children: children
       }), /*#__PURE__*/_jsx(Footer, {
