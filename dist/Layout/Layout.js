@@ -127,7 +127,12 @@ function MultiPath(_ref3) {
           })
         })]
       }) : /*#__PURE__*/_jsx("button", {
-        style: toggleStyle,
+        className: styles.sidebarButton,
+        style: {
+          border: "none",
+          width: "100%",
+          paddingRight: "4px"
+        },
         onClick: function onClick(e) {
           e.stopPropagation();
           setOpen(function (o) {
@@ -141,9 +146,9 @@ function MultiPath(_ref3) {
             justifyContent: "space-between"
           },
           children: [/*#__PURE__*/_jsx("span", {
-            className: styles.sidebarButton,
             children: path.title
           }), /*#__PURE__*/_jsx("span", {
+            style: toggleStyle,
             children: /*#__PURE__*/_jsx(ArrowIcon, {
               open: open
             })
