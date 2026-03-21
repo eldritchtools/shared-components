@@ -54,8 +54,17 @@ function MultiPath({ path, LinkComponent, closeSidebar }) {
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <PathLink path={path} styleOverride={{ flex: 1 }} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
-            <button style={toggleStyle} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}><ArrowIcon open={open} /></button>
+            {path.path ? <>
+                <PathLink path={path} styleOverride={{ flex: 1 }} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
+                <button style={toggleStyle} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}><ArrowIcon open={open} /></button>
+            </> :
+                <button style={toggleStyle} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <span className={styles.sidebarButton}>{path.title}</span>
+                        <span><ArrowIcon open={open} /></span>
+                    </div>
+                </button>
+            }
         </div>
 
         <div style={{ display: open ? "flex" : "none", flexDirection: "column", paddingLeft: "16px" }}>

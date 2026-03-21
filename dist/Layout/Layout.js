@@ -22,7 +22,7 @@ import { DiscordIcon, GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIc
 import { Tooltip } from "react-tooltip";
 import { useBreakpoint } from "../utils";
 import { linksets } from "../linksets";
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 var ArrowIcon = function ArrowIcon(_ref) {
   var open = _ref.open;
   return /*#__PURE__*/_jsx("svg", {
@@ -100,20 +100,33 @@ function MultiPath(_ref3) {
       display: "flex",
       flexDirection: "column"
     },
-    children: [/*#__PURE__*/_jsxs("div", {
+    children: [/*#__PURE__*/_jsx("div", {
       style: {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between"
       },
-      children: [/*#__PURE__*/_jsx(PathLink, {
-        path: path,
-        styleOverride: {
-          flex: 1
-        },
-        LinkComponent: LinkComponent,
-        closeSidebar: closeSidebar
-      }), /*#__PURE__*/_jsx("button", {
+      children: path.path ? /*#__PURE__*/_jsxs(_Fragment, {
+        children: [/*#__PURE__*/_jsx(PathLink, {
+          path: path,
+          styleOverride: {
+            flex: 1
+          },
+          LinkComponent: LinkComponent,
+          closeSidebar: closeSidebar
+        }), /*#__PURE__*/_jsx("button", {
+          style: toggleStyle,
+          onClick: function onClick(e) {
+            e.stopPropagation();
+            setOpen(function (o) {
+              return !o;
+            });
+          },
+          children: /*#__PURE__*/_jsx(ArrowIcon, {
+            open: open
+          })
+        })]
+      }) : /*#__PURE__*/_jsx("button", {
         style: toggleStyle,
         onClick: function onClick(e) {
           e.stopPropagation();
@@ -121,10 +134,22 @@ function MultiPath(_ref3) {
             return !o;
           });
         },
-        children: /*#__PURE__*/_jsx(ArrowIcon, {
-          open: open
+        children: /*#__PURE__*/_jsxs("div", {
+          style: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between"
+          },
+          children: [/*#__PURE__*/_jsx("span", {
+            className: styles.sidebarButton,
+            children: path.title
+          }), /*#__PURE__*/_jsx("span", {
+            children: /*#__PURE__*/_jsx(ArrowIcon, {
+              open: open
+            })
+          })]
         })
-      })]
+      })
     }), /*#__PURE__*/_jsx("div", {
       style: {
         display: open ? "flex" : "none",
