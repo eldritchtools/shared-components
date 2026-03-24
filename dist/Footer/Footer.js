@@ -1,7 +1,8 @@
 import { DiscordIcon, EmailIcon, GithubIcon, KoFiButton, XIcon, YoutubeIcon } from "../LinkIcons";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 function LinksComponent(_ref) {
-  var githubLink = _ref.githubLink;
+  var githubLink = _ref.githubLink,
+    sharedUrls = _ref.sharedUrls;
   return /*#__PURE__*/_jsxs("div", {
     style: {
       display: "flex",
@@ -10,7 +11,9 @@ function LinksComponent(_ref) {
     },
     children: [/*#__PURE__*/_jsx(EmailIcon, {}), /*#__PURE__*/_jsx(GithubIcon, {
       githubLink: githubLink
-    }), /*#__PURE__*/_jsx(DiscordIcon, {}), /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiButton, {})]
+    }), "discord" in sharedUrls ? /*#__PURE__*/_jsx(DiscordIcon, {
+      url: sharedUrls["discord"]
+    }) : null, /*#__PURE__*/_jsx(YoutubeIcon, {}), /*#__PURE__*/_jsx(XIcon, {}), /*#__PURE__*/_jsx(KoFiButton, {})]
   });
 }
 var footerStyle = {
@@ -27,7 +30,8 @@ function Footer(_ref2) {
   var description = _ref2.description,
     gameName = _ref2.gameName,
     developerName = _ref2.developerName,
-    githubLink = _ref2.githubLink;
+    githubLink = _ref2.githubLink,
+    sharedUrls = _ref2.sharedUrls;
   return /*#__PURE__*/_jsx("footer", {
     style: footerStyle,
     children: /*#__PURE__*/_jsxs("div", {
@@ -42,7 +46,8 @@ function Footer(_ref2) {
           marginTop: "0.75rem"
         },
         children: /*#__PURE__*/_jsx(LinksComponent, {
-          githubLink: githubLink
+          githubLink: githubLink,
+          sharedUrls: sharedUrls
         })
       }), /*#__PURE__*/_jsxs("p", {
         style: {

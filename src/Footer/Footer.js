@@ -1,10 +1,10 @@
 import { DiscordIcon, EmailIcon, GithubIcon, KoFiButton, XIcon, YoutubeIcon } from "../LinkIcons";
 
-function LinksComponent({ githubLink }) {
+function LinksComponent({ githubLink, sharedUrls }) {
     return <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
         <EmailIcon />
         <GithubIcon githubLink={githubLink} />
-        <DiscordIcon />
+        {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
         <YoutubeIcon />
         <XIcon />
         <KoFiButton />
@@ -13,7 +13,7 @@ function LinksComponent({ githubLink }) {
 
 const footerStyle = { width: "100%", boxSizing: "border-box", borderTop: "1px solid #777", padding: "1rem 1rem", textAlign: "center", fontSize: "0.9rem", color: "#ddd", background: "black" }
 
-function Footer({ description, gameName, developerName, githubLink }) {
+function Footer({ description, gameName, developerName, githubLink, sharedUrls }) {
     return (
         <footer style={footerStyle}>
             <div style={{ maxWidth: "700px", margin: "0 auto" }}>
@@ -24,7 +24,7 @@ function Footer({ description, gameName, developerName, githubLink }) {
                 </p>
 
                 <div style={{ marginTop: "0.75rem" }}>
-                    <LinksComponent githubLink={githubLink} />
+                    <LinksComponent githubLink={githubLink} sharedUrls={sharedUrls} />
                 </div>
 
                 <p style={{ fontSize: "0.8rem" }}>

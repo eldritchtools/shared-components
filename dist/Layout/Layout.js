@@ -401,7 +401,8 @@ export default function Layout(_ref6) {
         description: description,
         gameName: gameName,
         developerName: developerName,
-        githubLink: githubLink
+        githubLink: githubLink,
+        sharedUrls: sharedUrls
       })]
     }), ready && !isDesktop && sidebarOpen ? /*#__PURE__*/_jsx("div", {
       style: {

@@ -187,7 +187,7 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
             <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f" }}>
                 {children}
             </main>
-            <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} />
+            <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} sharedUrls={sharedUrls} />
         </div>
         {(ready && !isDesktop && sidebarOpen) ? <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: "998" }} onClick={closeSidebar} /> : null}
 
