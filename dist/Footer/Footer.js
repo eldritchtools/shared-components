@@ -40,7 +40,7 @@ function Footer(_ref2) {
         margin: "0 auto"
       },
       children: [/*#__PURE__*/_jsxs("p", {
-        children: [description, /*#__PURE__*/_jsx("br", {}), /*#__PURE__*/_jsx("br", {}), "This project is designed as a free fan-made project for the community. I create web tools for various games that will hopefully be useful to people. If you'd like to support me, you can check out my ko-fi page or other socials. Thank you!"]
+        children: [description, /*#__PURE__*/_jsx("br", {}), /*#__PURE__*/_jsx("br", {}), "This project is designed as a free fan-made project for the community. I create web tools for various games that will hopefully be useful to people. If you'd like to support me, you can check out the links below. Thank you!"]
       }), /*#__PURE__*/_jsx("div", {
         style: {
           marginTop: "0.75rem"

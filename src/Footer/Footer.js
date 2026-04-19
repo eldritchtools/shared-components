@@ -20,7 +20,7 @@ function Footer({ description, gameName, developerName, githubLink, sharedUrls }
                 <p>
                     {description}
                     <br /><br />
-                    This project is designed as a free fan-made project for the community. I create web tools for various games that will hopefully be useful to people. If you'd like to support me, you can check out my ko-fi page or other socials. Thank you!
+                    This project is designed as a free fan-made project for the community. I create web tools for various games that will hopefully be useful to people. If you'd like to support me, you can check out the links below. Thank you!
                 </p>
 
                 <div style={{ marginTop: "0.75rem" }}>
