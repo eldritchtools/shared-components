@@ -6,6 +6,7 @@ function LinksComponent(_ref) {
   return /*#__PURE__*/_jsxs("div", {
     style: {
       display: "flex",
+      flexWrap: "wrap",
       justifyContent: "center",
       gap: "1rem"
     },

@@ -85,8 +85,8 @@ function MultiPath(_ref3) {
     open = _useState2[0],
     setOpen = _useState2[1];
   var toggleStyle = {
-    width: "22px",
-    height: "22px",
+    width: "16px",
+    height: "16px",
     border: "none",
     background: "none",
     cursor: "pointer",
@@ -210,7 +210,10 @@ function Sidebar(_ref5) {
     topComponent = _ref5.topComponent,
     githubLink = _ref5.githubLink,
     closeSidebar = _ref5.closeSidebar,
-    sharedUrls = _ref5.sharedUrls;
+    sharedUrls = _ref5.sharedUrls,
+    backgroundColor = _ref5.backgroundColor,
+    color = _ref5.color,
+    borderColor = _ref5.borderColor;
   return /*#__PURE__*/_jsxs("div", {
     style: {
       position: "fixed",
@@ -221,11 +224,11 @@ function Sidebar(_ref5) {
       overflowX: "hidden",
       width: "240px",
       transition: "transform 0.3s ease",
-      backgroundColor: "#070707",
-      color: "#ddd",
+      backgroundColor: backgroundColor,
+      color: color,
       display: "flex",
       flexDirection: "column",
-      borderRight: open ? "1px #777 solid" : "transparent",
+      borderRight: open ? "1px ".concat(borderColor, " solid") : "transparent",
       transform: open ? "translateX(0)" : "translateX(-100%)",
       zIndex: "999"
     },
@@ -238,7 +241,7 @@ function Sidebar(_ref5) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        borderTop: "1px #777 solid",
+        borderTop: "1px ".concat(borderColor, " solid"),
         gap: "0.5rem"
       },
       children: [/*#__PURE__*/_jsxs("div", {
@@ -285,7 +288,13 @@ export default function Layout(_ref6) {
     _ref6$LinkComponent = _ref6.LinkComponent,
     LinkComponent = _ref6$LinkComponent === void 0 ? "a" : _ref6$LinkComponent,
     topComponent = _ref6.topComponent,
-    children = _ref6.children;
+    children = _ref6.children,
+    _ref6$backgroundColor = _ref6.backgroundColor,
+    backgroundColor = _ref6$backgroundColor === void 0 ? "#070707" : _ref6$backgroundColor,
+    _ref6$color = _ref6.color,
+    color = _ref6$color === void 0 ? "#ddd" : _ref6$color,
+    _ref6$borderColor = _ref6.borderColor,
+    borderColor = _ref6$borderColor === void 0 ? "#777" : _ref6$borderColor;
   var _useBreakpoint = useBreakpoint(),
     isDesktop = _useBreakpoint.isDesktop,
     ready = _useBreakpoint.ready;
@@ -381,7 +390,10 @@ export default function Layout(_ref6) {
       githubLink: githubLink,
       topComponent: topComponent,
       closeSidebar: ready && !isDesktop ? closeSidebar : undefined,
-      sharedUrls: sharedUrls
+      sharedUrls: sharedUrls,
+      backgroundColor: backgroundColor,
+      color: color,
+      borderColor: borderColor
     }), /*#__PURE__*/_jsxs("div", {
       style: {
         display: "flex",

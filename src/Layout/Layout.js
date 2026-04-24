@@ -41,8 +41,8 @@ function MultiPath({ path, LinkComponent, closeSidebar }) {
     const [open, setOpen] = useState(false);
 
     const toggleStyle = {
-        width: "22px",
-        height: "22px",
+        width: "16px",
+        height: "16px",
         border: "none",
         background: "none",
         cursor: "pointer",
@@ -58,7 +58,7 @@ function MultiPath({ path, LinkComponent, closeSidebar }) {
                 <PathLink path={path} styleOverride={{ flex: 1 }} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
                 <button style={toggleStyle} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}><ArrowIcon open={open} /></button>
             </> :
-                <button className={styles.sidebarButton} style={{border: "none", width: "100%", paddingRight: "4px"}} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}>
+                <button className={styles.sidebarButton} style={{ border: "none", width: "100%", paddingRight: "4px" }} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <span>{path.title}</span>
                         <span style={toggleStyle}><ArrowIcon open={open} /></span>
@@ -87,7 +87,7 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
     </nav>
 }
 
-function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls }) {
+function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls, backgroundColor, color, borderColor }) {
     return (
         <div
             style={{
@@ -99,18 +99,18 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
                 overflowX: "hidden",
                 width: "240px",
                 transition: "transform 0.3s ease",
-                backgroundColor: "#070707",
-                color: "#ddd",
+                backgroundColor: backgroundColor,
+                color: color,
                 display: "flex",
                 flexDirection: "column",
-                borderRight: open ? "1px #777 solid" : "transparent",
+                borderRight: open ? `1px ${borderColor} solid` : "transparent",
                 transform: open ? "translateX(0)" : "translateX(-100%)",
                 zIndex: "999"
             }}
         >
             {topComponent ? topComponent : null}
             <Navigation paths={paths} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: "1px #777 solid", gap: "0.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: `1px ${borderColor} solid`, gap: "0.5rem" }}>
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginTop: "1rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
                     {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
@@ -125,7 +125,11 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
     );
 }
 
-export default function Layout({ title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null, githubLink = null, paths = [], LinkComponent = "a", topComponent, children }) {
+export default function Layout({
+    title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null,
+    githubLink = null, paths = [], LinkComponent = "a", topComponent, children,
+    backgroundColor = "#070707", color = "#ddd", borderColor = "#777"
+}) {
     const { isDesktop, ready } = useBreakpoint();
     const initialized = useRef(false);
 
@@ -182,6 +186,9 @@ export default function Layout({ title = null, linkSet = null, lastUpdated = nul
             topComponent={topComponent}
             closeSidebar={(ready && !isDesktop) ? closeSidebar : undefined}
             sharedUrls={sharedUrls}
+            backgroundColor={backgroundColor}
+            color={color}
+            borderColor={borderColor}
         />
         <div style={{ display: "flex", flexDirection: "column", marginLeft: (sidebarOpen && isDesktop) ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
             <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f" }}>

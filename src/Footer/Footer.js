@@ -1,7 +1,7 @@
 import { DiscordIcon, EmailIcon, GithubIcon, KoFiButton, XIcon, YoutubeIcon } from "../LinkIcons";
 
 function LinksComponent({ githubLink, sharedUrls }) {
-    return <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+    return <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
         <EmailIcon />
         <GithubIcon githubLink={githubLink} />
         {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
