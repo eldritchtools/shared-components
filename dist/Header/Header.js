@@ -45,10 +45,11 @@ function DesktopHeader(_ref) {
         alignItems: "center"
       },
       children: [sidebarButton, /*#__PURE__*/_jsx("a", {
+        "aria-label": "Eldritch Tools Home",
         href: "https://eldritchtools.com/",
         children: /*#__PURE__*/_jsx("img", {
           src: logob64,
-          alt: "logo",
+          alt: "Eldritch Tools",
           width: 32,
           height: 32,
           style: {
@@ -139,10 +140,11 @@ function MobileHeader(_ref3) {
         alignItems: "center"
       },
       children: [sidebarButton, /*#__PURE__*/_jsx("a", {
+        "aria-label": "Eldritch Tools Home",
         href: "https://eldritchtools.com/",
         children: /*#__PURE__*/_jsx("img", {
           src: logob64,
-          alt: "logo",
+          alt: "Eldritch Tools",
           width: 32,
           height: 32,
           style: {
@@ -219,6 +221,7 @@ function Header(_ref4) {
     isDesktop = _useBreakpoint.isDesktop,
     ready = _useBreakpoint.ready;
   return /*#__PURE__*/_jsx("header", {
+    role: "banner",
     style: {
       position: "sticky",
       top: 0,

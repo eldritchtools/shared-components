@@ -181,6 +181,7 @@ function Navigation(_ref4) {
     LinkComponent = _ref4.LinkComponent,
     closeSidebar = _ref4.closeSidebar;
   return /*#__PURE__*/_jsx("nav", {
+    "aria-label": "Main Navigation",
     style: {
       display: "flex",
       flexDirection: "column"
@@ -360,6 +361,8 @@ export default function Layout(_ref6) {
     initialized.current = true;
   }, [ready, isDesktop]);
   var sidebarButton = /*#__PURE__*/_jsx("button", {
+    "aria-expanded": sidebarOpen ? "true" : "false",
+    "aria-label": "Toggle Navigation Menu",
     onClick: function onClick() {
       return setSidebarOpen(function (prev) {
         return !prev;

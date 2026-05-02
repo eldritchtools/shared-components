@@ -76,7 +76,7 @@ function MultiPath({ path, LinkComponent, closeSidebar }) {
 }
 
 function Navigation({ paths, LinkComponent, closeSidebar }) {
-    return <nav style={{ display: "flex", flexDirection: "column" }}>
+    return <nav aria-label="Main Navigation" style={{ display: "flex", flexDirection: "column" }}>
         {paths.map((path, i) => {
             if ("subpaths" in path) {
                 return <MultiPath key={i} path={path} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />;
@@ -167,9 +167,14 @@ export default function Layout({
         initialized.current = true;
     }, [ready, isDesktop]);
 
-    const sidebarButton = <button onClick={() => setSidebarOpen(prev => !prev)}>
-        ☰
-    </button>
+    const sidebarButton =
+        <button
+            aria-expanded={sidebarOpen ? "true" : "false"}
+            aria-label="Toggle Navigation Menu"
+            onClick={() => setSidebarOpen(prev => !prev)}
+        >
+            ☰
+        </button>
 
     const closeSidebar = () => setSidebarOpen(false);
     // Temp default linksets to deal with cached links.json in R2

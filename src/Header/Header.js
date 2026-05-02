@@ -23,8 +23,8 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
     return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "1rem" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "0.75rem", alignItems: "center" }}>
             {sidebarButton}
-            <a href="https://eldritchtools.com/">
-                <img src={logob64} alt="logo" width={32} height={32} style={{ borderRadius: "50%" }} />
+            <a aria-label="Eldritch Tools Home" href="https://eldritchtools.com/">
+                <img src={logob64} alt="Eldritch Tools" width={32} height={32} style={{ borderRadius: "50%" }} />
             </a>
             {linkSet && linkSet.links.length > 1 ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
         </div>
@@ -62,8 +62,8 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
     return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "0.75rem", alignItems: "center" }}>
             {sidebarButton}
-            <a href="https://eldritchtools.com/">
-                <img src={logob64} alt="logo" width={32} height={32} style={{ borderRadius: "50%" }} />
+            <a aria-label="Eldritch Tools Home" href="https://eldritchtools.com/">
+                <img src={logob64} alt="Eldritch Tools" width={32} height={32} style={{ borderRadius: "50%" }} />
             </a>
         </div>
 
@@ -106,6 +106,7 @@ function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButto
 
     return (
         <header
+            role="banner"
             style={{
                 position: "sticky",
                 top: 0,
