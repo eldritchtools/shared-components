@@ -87,12 +87,12 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
     </nav>
 }
 
-function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls, backgroundColor, color, borderColor }) {
+function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls }) {
     return (
         <div className={`${styles.sidebar} ${open ? styles.open : styles.closed}`}>
             {topComponent ? topComponent : null}
             <Navigation paths={paths} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: `1px ${borderColor} solid`, gap: "0.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: `1px var(--primary-border-color) solid`, gap: "0.5rem" }}>
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginTop: "1rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
                     {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}

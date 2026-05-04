@@ -211,10 +211,7 @@ function Sidebar(_ref5) {
     topComponent = _ref5.topComponent,
     githubLink = _ref5.githubLink,
     closeSidebar = _ref5.closeSidebar,
-    sharedUrls = _ref5.sharedUrls,
-    backgroundColor = _ref5.backgroundColor,
-    color = _ref5.color,
-    borderColor = _ref5.borderColor;
+    sharedUrls = _ref5.sharedUrls;
   return /*#__PURE__*/_jsxs("div", {
     className: "".concat(styles.sidebar, " ").concat(open ? styles.open : styles.closed),
     children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {
@@ -226,7 +223,7 @@ function Sidebar(_ref5) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        borderTop: "1px ".concat(borderColor, " solid"),
+        borderTop: "1px var(--primary-border-color) solid",
         gap: "0.5rem"
       },
       children: [/*#__PURE__*/_jsxs("div", {
