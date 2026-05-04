@@ -89,7 +89,7 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
 
 function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls, backgroundColor, color, borderColor }) {
     return (
-        <div className={`${styles.sidebar} ${open ? "open" : "closed"}`}>
+        <div className={`${styles.sidebar} ${open ? styles.open : styles.closed}`}>
             {topComponent ? topComponent : null}
             <Navigation paths={paths} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: `1px ${borderColor} solid`, gap: "0.5rem" }}>

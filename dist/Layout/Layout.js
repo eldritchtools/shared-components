@@ -216,7 +216,7 @@ function Sidebar(_ref5) {
     color = _ref5.color,
     borderColor = _ref5.borderColor;
   return /*#__PURE__*/_jsxs("div", {
-    className: "".concat(styles.sidebar, " ").concat(open ? "open" : "closed"),
+    className: "".concat(styles.sidebar, " ").concat(open ? styles.open : styles.closed),
     children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {
       paths: paths,
       LinkComponent: LinkComponent,

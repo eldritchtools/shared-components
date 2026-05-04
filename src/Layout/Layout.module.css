@@ -8,8 +8,8 @@
 .sidebarButton:link,
 .sidebarButton:visited,
 .sidebarButton:active {
-  background-color: #070707;
-  color: #ddd;
+  background-color: var(--bg-secondary, #070707);
+  color: var(--primary-text-color, #ddd);
   padding: 8px 12px;
   text-decoration: none;
   transition: background-color 0.2s, border-color 0.2s;
