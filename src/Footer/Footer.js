@@ -11,7 +11,11 @@ function LinksComponent({ githubLink, sharedUrls }) {
     </div>
 }
 
-const footerStyle = { width: "100%", boxSizing: "border-box", borderTop: "1px solid #777", padding: "1rem 1rem", textAlign: "center", fontSize: "0.9rem", color: "#ddd", background: "black" }
+const footerStyle = { 
+    width: "100%", boxSizing: "border-box", borderTop: "1px solid var(--border-secondary-color, #777)", 
+    padding: "1rem 1rem", textAlign: "center", fontSize: "0.9rem", color: "var(--primary-text-color, #ddd)", 
+    background: "var(--bg-secondary, #000)" 
+};
 
 function Footer({ description, gameName, developerName, githubLink, sharedUrls }) {
     return (

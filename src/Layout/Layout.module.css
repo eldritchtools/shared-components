@@ -1,3 +1,9 @@
+.mainContainer {
+  min-height: calc(100vh - 48px);
+  padding: 20px;
+  background-color: var(--bg-primary, #1f1f1f);
+}
+
 .sidebarButton,
 .sidebarButton:link,
 .sidebarButton:visited,
@@ -18,4 +24,37 @@
 .sidebarButton:visited,
 .sidebarButton:hover:visited {
   color: #ddd;
+}
+
+.sidebar {
+  position: fixed;
+  top: 48px;
+  align-self: flex-start;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 240px;
+  transition: transform 0.3s ease;
+  background-color: var(--bg-secondary, #000000);
+  color: var(--primary-text-color, #ddd);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.sidebar.open {
+  border-right: 1px var(--primary-border-color, #aaa) solid;
+  transform: translateX(0);
+}
+
+.sidebar.closed {
+  border-right: transparent;
+  transform: translateX(-100%);
+}
+
+.sidebarTooltip {
+  outline: 1px var(--primary-border-color, #ddd) solid;
+  background-color: var(--bg-secondary, #000000);
+  border-radius: 1rem;
+  z-index: 9999;
 }

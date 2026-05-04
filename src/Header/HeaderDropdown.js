@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./HeaderDropdown.css";
+import styles from "./HeaderDropdown.module.css";
 
 export default function HeaderDropdown({ name, links }) {
     const [open, setOpen] = useState(false);
@@ -19,25 +19,12 @@ export default function HeaderDropdown({ name, links }) {
             </div>
 
             {open && (
-                <div
-                    style={{
-                        position: "absolute",
-                        top: "100%",
-                        left: 0,
-                        background: "#070707",
-                        padding: "6px 0",
-                        minWidth: "160px",
-                        width: "auto",
-                        zIndex: 1001,
-                    }}
-                >
+                <div className={styles.headerMenu}>
                     {
                         links.map((link, i) =>
-                            <a key={i}
-                                href={`https://${link.subdomain}.eldritchtools.com`}
-                                className="header-menu-item"
-                                style={{ color: "#ddd", textDecoration: "none" }}
-                            >{link.name}</a>)
+                            <a key={i} href={`https://${link.subdomain}.eldritchtools.com`} className={styles.headerMenuItem}>
+                                {link.name}
+                            </a>)
                     }
                 </div>
             )}

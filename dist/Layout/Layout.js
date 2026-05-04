@@ -216,23 +216,7 @@ function Sidebar(_ref5) {
     color = _ref5.color,
     borderColor = _ref5.borderColor;
   return /*#__PURE__*/_jsxs("div", {
-    style: {
-      position: "fixed",
-      top: "48px",
-      alignSelf: "flex-start",
-      height: "calc(100vh - 48px)",
-      overflowY: "auto",
-      overflowX: "hidden",
-      width: "240px",
-      transition: "transform 0.3s ease",
-      backgroundColor: backgroundColor,
-      color: color,
-      display: "flex",
-      flexDirection: "column",
-      borderRight: open ? "1px ".concat(borderColor, " solid") : "transparent",
-      transform: open ? "translateX(0)" : "translateX(-100%)",
-      zIndex: "999"
-    },
+    className: "".concat(styles.sidebar, " ").concat(open ? "open" : "closed"),
     children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {
       paths: paths,
       LinkComponent: LinkComponent,
@@ -289,13 +273,7 @@ export default function Layout(_ref6) {
     _ref6$LinkComponent = _ref6.LinkComponent,
     LinkComponent = _ref6$LinkComponent === void 0 ? "a" : _ref6$LinkComponent,
     topComponent = _ref6.topComponent,
-    children = _ref6.children,
-    _ref6$backgroundColor = _ref6.backgroundColor,
-    backgroundColor = _ref6$backgroundColor === void 0 ? "#070707" : _ref6$backgroundColor,
-    _ref6$color = _ref6.color,
-    color = _ref6$color === void 0 ? "#ddd" : _ref6$color,
-    _ref6$borderColor = _ref6.borderColor,
-    borderColor = _ref6$borderColor === void 0 ? "#777" : _ref6$borderColor;
+    children = _ref6.children;
   var _useBreakpoint = useBreakpoint(),
     isDesktop = _useBreakpoint.isDesktop,
     ready = _useBreakpoint.ready;
@@ -393,10 +371,7 @@ export default function Layout(_ref6) {
       githubLink: githubLink,
       topComponent: topComponent,
       closeSidebar: ready && !isDesktop ? closeSidebar : undefined,
-      sharedUrls: sharedUrls,
-      backgroundColor: backgroundColor,
-      color: color,
-      borderColor: borderColor
+      sharedUrls: sharedUrls
     }), /*#__PURE__*/_jsxs("div", {
       style: {
         display: "flex",
@@ -406,11 +381,7 @@ export default function Layout(_ref6) {
         transition: "margin-left 0.3s ease"
       },
       children: [/*#__PURE__*/_jsx("main", {
-        style: {
-          minHeight: "calc(100vh - 48px)",
-          padding: "20px",
-          backgroundColor: "#1f1f1f"
-        },
+        className: styles.mainContainer,
         children: children
       }), /*#__PURE__*/_jsx(Footer, {
         description: description,
@@ -429,6 +400,7 @@ export default function Layout(_ref6) {
       onClick: closeSidebar
     }) : null, /*#__PURE__*/_jsx(Tooltip, {
       id: "sidebarNavTooltip",
+      className: styles.sidebarTooltip,
       render: function render(_ref8) {
         var content = _ref8.content;
         return /*#__PURE__*/_jsx("div", {
@@ -437,12 +409,6 @@ export default function Layout(_ref6) {
           },
           children: content
         });
-      },
-      style: {
-        outline: "1px #ddd solid",
-        backgroundColor: "#000000",
-        borderRadius: "1rem",
-        zIndex: "9999"
       }
     })]
   });

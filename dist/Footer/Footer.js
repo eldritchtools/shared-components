@@ -20,12 +20,12 @@ function LinksComponent(_ref) {
 var footerStyle = {
   width: "100%",
   boxSizing: "border-box",
-  borderTop: "1px solid #777",
+  borderTop: "1px solid var(--border-secondary-color, #777)",
   padding: "1rem 1rem",
   textAlign: "center",
   fontSize: "0.9rem",
-  color: "#ddd",
-  background: "black"
+  color: "var(--primary-text-color, #ddd)",
+  background: "var(--bg-secondary, #000)"
 };
 function Footer(_ref2) {
   var description = _ref2.description,

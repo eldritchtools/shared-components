@@ -89,25 +89,7 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
 
 function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls, backgroundColor, color, borderColor }) {
     return (
-        <div
-            style={{
-                position: "fixed",
-                top: "48px",
-                alignSelf: "flex-start",
-                height: "calc(100vh - 48px)",
-                overflowY: "auto",
-                overflowX: "hidden",
-                width: "240px",
-                transition: "transform 0.3s ease",
-                backgroundColor: backgroundColor,
-                color: color,
-                display: "flex",
-                flexDirection: "column",
-                borderRight: open ? `1px ${borderColor} solid` : "transparent",
-                transform: open ? "translateX(0)" : "translateX(-100%)",
-                zIndex: "999"
-            }}
-        >
+        <div className={`${styles.sidebar} ${open ? "open" : "closed"}`}>
             {topComponent ? topComponent : null}
             <Navigation paths={paths} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: `1px ${borderColor} solid`, gap: "0.5rem" }}>
@@ -127,8 +109,7 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
 
 export default function Layout({
     title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null,
-    githubLink = null, paths = [], LinkComponent = "a", topComponent, children,
-    backgroundColor = "#070707", color = "#ddd", borderColor = "#777"
+    githubLink = null, paths = [], LinkComponent = "a", topComponent, children
 }) {
     const { isDesktop, ready } = useBreakpoint();
     const initialized = useRef(false);
@@ -191,12 +172,9 @@ export default function Layout({
             topComponent={topComponent}
             closeSidebar={(ready && !isDesktop) ? closeSidebar : undefined}
             sharedUrls={sharedUrls}
-            backgroundColor={backgroundColor}
-            color={color}
-            borderColor={borderColor}
         />
         <div style={{ display: "flex", flexDirection: "column", marginLeft: (sidebarOpen && isDesktop) ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
-            <main style={{ minHeight: "calc(100vh - 48px)", padding: "20px", backgroundColor: "#1f1f1f" }}>
+            <main className={styles.mainContainer}>
                 {children}
             </main>
             <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} sharedUrls={sharedUrls} />
@@ -205,8 +183,8 @@ export default function Layout({
 
         <Tooltip
             id={"sidebarNavTooltip"}
+            className={styles.sidebarTooltip}
             render={({ content }) => <div style={{ whiteSpace: "pre-wrap" }}>{content}</div>}
-            style={{ outline: "1px #ddd solid", backgroundColor: "#000000", borderRadius: "1rem", zIndex: "9999" }}
         />
     </div>
 }

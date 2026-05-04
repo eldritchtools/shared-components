@@ -1,0 +1,25 @@
+.headerMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg-secondary);
+    padding: 6px 0;
+    min-width: 160px;
+    width: auto;
+    z-index: 1001;
+}
+
+.headerMenuItem {
+    display: block;
+    padding: 8px 12px;
+    color: var(--primary-text-color);
+    font-size: 1rem;
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+    width: auto;
+}
+
+.headerMenuItem:hover {
+    background: var(--bg-hover);
+}

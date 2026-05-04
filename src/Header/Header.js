@@ -30,7 +30,7 @@ function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sideb
         </div>
 
         <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
-            <a href={"/"} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
+            <a href={"/"} style={{ color: "var(--primary-text-color, #ddd)", textDecoration: "none", cursor: "pointer" }}>
                 {title}
             </a>
         </h1>
@@ -68,7 +68,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
         </div>
 
         <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
-            <a href={"/"} style={{ color: "#ddd", textDecoration: "none", cursor: "pointer" }}>
+            <a href={"/"} style={{ color: "var(--primary-text-color, #ddd)", textDecoration: "none", cursor: "pointer" }}>
                 {title}
             </a>
         </h1>
@@ -85,8 +85,8 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
                     marginTop: "0.5rem",
                     width: "12rem",
                     padding: "6px 4px",
-                    background: "#111111",
-                    border: "1px #777 solid",
+                    background: "var(--bg-secondary, #111111)",
+                    border: "1px var(--secondary-border-color, #777) solid",
                     boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
                     zIndex: 1001
                 }}>
@@ -112,8 +112,8 @@ function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButto
                 top: 0,
                 height: "48px",
                 padding: "0.25rem 1rem",
-                background: "#111111",
-                color: "#ddd",
+                background: "var(--bg-secondary, #111111)",
+                color: "var(--primary-text-color, #ddd)",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
                 boxSizing: "border-box",
                 zIndex: 1000

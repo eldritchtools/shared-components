@@ -5,7 +5,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 import { useState } from "react";
-import "./HeaderDropdown.css";
+import styles from "./HeaderDropdown.module.css";
 import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
 export default function HeaderDropdown(_ref) {
   var name = _ref.name,
@@ -33,24 +33,11 @@ export default function HeaderDropdown(_ref) {
       },
       children: [name, " \u25BC"]
     }), open && /*#__PURE__*/_jsx("div", {
-      style: {
-        position: "absolute",
-        top: "100%",
-        left: 0,
-        background: "#070707",
-        padding: "6px 0",
-        minWidth: "160px",
-        width: "auto",
-        zIndex: 1001
-      },
+      className: styles.headerMenu,
       children: links.map(function (link, i) {
         return /*#__PURE__*/_jsx("a", {
           href: "https://".concat(link.subdomain, ".eldritchtools.com"),
-          className: "header-menu-item",
-          style: {
-            color: "#ddd",
-            textDecoration: "none"
-          },
+          className: styles.headerMenuItem,
           children: link.name
         }, i);
       })
