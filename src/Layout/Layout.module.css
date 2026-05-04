@@ -18,12 +18,12 @@
 }
 
 .sidebarButton:hover {
-  background-color: #3a3a3a;
+  background-color: var(--bg-hover, #3a3a3a);
 }
 
 .sidebarButton:visited,
 .sidebarButton:hover:visited {
-  color: #ddd;
+  color: var(--primary-text-color, #ddd);
 }
 
 .sidebar {
@@ -43,8 +43,9 @@
 }
 
 .sidebar.open {
-  border-right: 1px var(--primary-border-color, #aaa) solid;
+  border-right: 1px var(--secondary-border-color, #aaa) solid;
   transform: translateX(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .sidebar.closed {
