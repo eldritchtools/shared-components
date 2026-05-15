@@ -11,32 +11,20 @@ function LinksComponent({ githubLink, sharedUrls }) {
     </div>
 }
 
-const footerStyle = { 
-    width: "100%", boxSizing: "border-box", borderTop: "1px solid var(--border-secondary-color, #777)", 
-    padding: "1rem 1rem", textAlign: "center", fontSize: "0.9rem", color: "var(--primary-text-color, #ddd)", 
-    background: "var(--bg-secondary, #000)" 
+const footerStyle = {
+    width: "100%", boxSizing: "border-box", borderTop: "1px solid var(--border-secondary-color, #777)",
+    padding: "1rem 1rem", textAlign: "center", fontSize: "0.9rem", color: "var(--primary-text-color, #ddd)",
+    background: "var(--bg-secondary, #000)"
 };
 
 function Footer({ description, gameName, developerName, githubLink, sharedUrls }) {
-    return (
-        <footer style={footerStyle}>
-            <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-                <p>
-                    {description}
-                    <br /><br />
-                    This project is designed as a free fan-made project for the community. I create web tools for various games that will hopefully be useful to people. If you'd like to support me, you can check out the links below. Thank you!
-                </p>
-
-                <div style={{ marginTop: "0.75rem" }}>
-                    <LinksComponent githubLink={githubLink} sharedUrls={sharedUrls} />
-                </div>
-
-                <p style={{ fontSize: "0.8rem" }}>
-                    This tool is a fan-made project and is not affiliated with or endorsed by {developerName}. {gameName} and all related assets are © {developerName}. All rights reserved to their respective owners. The tool is free to use, and any donations go directly to supporting development of this tool and other free tools.
-                </p>
-            </div>
-        </footer>
-    );
+    return <footer style={footerStyle}>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+            <p style={{ fontSize: "0.8rem" }}>
+                This tool is a fan-made project and is not affiliated with or endorsed by {developerName}. {gameName} and all related assets are © {developerName}. All rights reserved to their respective owners.
+            </p>
+        </div>
+    </footer>;
 }
 
 export default Footer;

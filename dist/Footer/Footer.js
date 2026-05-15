@@ -35,27 +35,17 @@ function Footer(_ref2) {
     sharedUrls = _ref2.sharedUrls;
   return /*#__PURE__*/_jsx("footer", {
     style: footerStyle,
-    children: /*#__PURE__*/_jsxs("div", {
+    children: /*#__PURE__*/_jsx("div", {
       style: {
         maxWidth: "700px",
         margin: "0 auto"
       },
-      children: [/*#__PURE__*/_jsxs("p", {
-        children: [description, /*#__PURE__*/_jsx("br", {}), /*#__PURE__*/_jsx("br", {}), "This project is designed as a free fan-made project for the community. I create web tools for various games that will hopefully be useful to people. If you'd like to support me, you can check out the links below. Thank you!"]
-      }), /*#__PURE__*/_jsx("div", {
-        style: {
-          marginTop: "0.75rem"
-        },
-        children: /*#__PURE__*/_jsx(LinksComponent, {
-          githubLink: githubLink,
-          sharedUrls: sharedUrls
-        })
-      }), /*#__PURE__*/_jsxs("p", {
+      children: /*#__PURE__*/_jsxs("p", {
         style: {
           fontSize: "0.8rem"
         },
-        children: ["This tool is a fan-made project and is not affiliated with or endorsed by ", developerName, ". ", gameName, " and all related assets are \xA9 ", developerName, ". All rights reserved to their respective owners. The tool is free to use, and any donations go directly to supporting development of this tool and other free tools."]
-      })]
+        children: ["This tool is a fan-made project and is not affiliated with or endorsed by ", developerName, ". ", gameName, " and all related assets are \xA9 ", developerName, ". All rights reserved to their respective owners."]
+      })
     })
   });
 }
