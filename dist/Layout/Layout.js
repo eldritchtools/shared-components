@@ -238,7 +238,7 @@ function Sidebar(_ref5) {
           githubLink: githubLink
         }) : null, "discord" in sharedUrls ? /*#__PURE__*/_jsx(DiscordIcon, {
           url: sharedUrls["discord"]
-        }) : null, /*#__PURE__*/_jsx(KoFiIcon, {})]
+        }) : null]
       }), "discord" in sharedUrls ? /*#__PURE__*/_jsx("span", {
         style: {
           fontSize: "0.8rem",

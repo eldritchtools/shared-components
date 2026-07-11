@@ -96,7 +96,7 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginTop: "1rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
                     {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
-                    <KoFiIcon />
+                    {/* <KoFiIcon /> */}
                 </div>
                 {"discord" in sharedUrls ?
                     <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join our Discord for updates and feedback, or just to chat.</span> :
