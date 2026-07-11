@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { DiscordIcon, GithubIcon, KoFiIcon, XIcon, YoutubeIcon } from "../LinkIcons";
+import { DiscordIcon, GithubIcon, XIcon, YoutubeIcon } from "../LinkIcons";
 import { Tooltip } from "react-tooltip";
 import { useBreakpoint } from "../utils";
 import { linksets } from "../linksets";
