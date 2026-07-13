@@ -1,3 +1,25 @@
+.mainContainerContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 240px;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+.mainContainerContainer.toggled {
+  margin-left: 0px;
+}
+
+@media (max-width: 768px) {
+  .mainContainerContainer {
+    margin-left: 0px;
+  }
+
+  .mainContainerContainer.toggled {
+    margin-left: 0px;
+  }
+}
+
 .mainContainer {
   min-height: calc(100vh - 48px);
   padding: 20px;
@@ -40,7 +62,7 @@
   display: flex;
   flex-direction: column;
   z-index: 999;
-  
+
   border-right: 1px var(--secondary-border-color, #aaa) solid;
   transform: translateX(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

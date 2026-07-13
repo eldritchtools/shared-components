@@ -204,7 +204,7 @@ function Navigation(_ref4) {
   });
 }
 function Sidebar(_ref5) {
-  var open = _ref5.open,
+  var sidebarToggled = _ref5.sidebarToggled,
     paths = _ref5.paths,
     _ref5$LinkComponent = _ref5.LinkComponent,
     LinkComponent = _ref5$LinkComponent === void 0 ? "a" : _ref5$LinkComponent,
@@ -213,7 +213,7 @@ function Sidebar(_ref5) {
     closeSidebar = _ref5.closeSidebar,
     sharedUrls = _ref5.sharedUrls;
   return /*#__PURE__*/_jsxs("div", {
-    className: "".concat(styles.sidebar, " ").concat(open ? styles.open : styles.closed),
+    className: "".concat(styles.sidebar, " ").concat(sidebarToggled ? styles.toggled : null),
     children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {
       paths: paths,
       LinkComponent: LinkComponent,
@@ -277,8 +277,8 @@ export default function Layout(_ref6) {
   var initialized = useRef(false);
   var _useState3 = useState(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    sidebarOpen = _useState4[0],
-    setSidebarOpen = _useState4[1];
+    sidebarToggled = _useState4[0],
+    setSidebarToggled = _useState4[1];
   var _useState5 = useState({}),
     _useState6 = _slicedToArray(_useState5, 2),
     sharedUrls = _useState6[0],
@@ -330,11 +330,6 @@ export default function Layout(_ref6) {
     }();
     _fetchData();
   }, []);
-  useEffect(function () {
-    if (!ready || initialized.current) return;
-    setSidebarOpen(isDesktop);
-    initialized.current = true;
-  }, [ready, isDesktop]);
   var toggleSidebar = function toggleSidebar() {
     return setSidebarToggled(function (p) {
       return !p;
@@ -361,7 +356,7 @@ export default function Layout(_ref6) {
       lastUpdated: lastUpdated,
       sidebarButton: sidebarButton
     }), /*#__PURE__*/_jsx(Sidebar, {
-      open: sidebarOpen,
+      sidebarToggled: sidebarToggled,
       paths: paths,
       LinkComponent: LinkComponent,
       githubLink: githubLink,
@@ -369,13 +364,7 @@ export default function Layout(_ref6) {
       closeSidebar: ready && !isDesktop ? toggleSidebar : undefined,
       sharedUrls: sharedUrls
     }), /*#__PURE__*/_jsxs("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        marginLeft: sidebarOpen && isDesktop ? "240px" : "0px",
-        overflowY: "auto",
-        transition: "margin-left 0.3s ease"
-      },
+      className: "".concat(styles.mainContainerContainer, " ").concat(sidebarToggled ? styles.toggled : null),
       children: [/*#__PURE__*/_jsx("main", {
         className: styles.mainContainer,
         children: children

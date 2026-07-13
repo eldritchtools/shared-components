@@ -87,9 +87,9 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
     </nav>
 }
 
-function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls }) {
+function Sidebar({ sidebarToggled, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls }) {
     return (
-        <div className={`${styles.sidebar} ${open ? styles.open : styles.closed}`}>
+        <div className={`${styles.sidebar} ${sidebarToggled ? styles.toggled : null}`}>
             {topComponent ? topComponent : null}
             <Navigation paths={paths} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: `1px var(--primary-border-color) solid`, gap: "0.5rem" }}>
@@ -113,7 +113,7 @@ export default function Layout({
     const { isDesktop, ready } = useBreakpoint();
     const initialized = useRef(false);
 
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [sidebarToggled, setSidebarToggled] = useState(false);
     const [sharedUrls, setSharedUrls] = useState({});
 
     useEffect(() => {
@@ -140,13 +140,6 @@ export default function Layout({
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (!ready || initialized.current) return;
-
-        setSidebarOpen(isDesktop);
-        initialized.current = true;
-    }, [ready, isDesktop]);
-    
     const toggleSidebar = () => setSidebarToggled(p => !p);
 
     const sidebarButton =
@@ -165,7 +158,7 @@ export default function Layout({
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <Header title={title} linkSet={linksetObject} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
         <Sidebar
-            open={sidebarOpen}
+            sidebarToggled={sidebarToggled}
             paths={paths}
             LinkComponent={LinkComponent}
             githubLink={githubLink}
@@ -173,7 +166,7 @@ export default function Layout({
             closeSidebar={(ready && !isDesktop) ? toggleSidebar : undefined}
             sharedUrls={sharedUrls}
         />
-        <div style={{ display: "flex", flexDirection: "column", marginLeft: (sidebarOpen && isDesktop) ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >
+        <div className={`${styles.mainContainerContainer} ${sidebarToggled ? styles.toggled : null}`} >
             <main className={styles.mainContainer}>
                 {children}
             </main>
