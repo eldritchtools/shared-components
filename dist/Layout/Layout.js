@@ -272,8 +272,7 @@ export default function Layout(_ref6) {
     topComponent = _ref6.topComponent,
     children = _ref6.children;
   var _useBreakpoint = useBreakpoint(),
-    isDesktop = _useBreakpoint.isDesktop,
-    ready = _useBreakpoint.ready;
+    isMobile = _useBreakpoint.isMobile;
   var initialized = useRef(false);
   var _useState3 = useState(false),
     _useState4 = _slicedToArray(_useState3, 2),
@@ -336,7 +335,7 @@ export default function Layout(_ref6) {
     });
   };
   var sidebarButton = /*#__PURE__*/_jsx("button", {
-    "aria-expanded": sidebarOpen ? "true" : "false",
+    "aria-expanded": isMobile && sidebarToggled || !isMobile && !sidebarToggled ? "true" : "false",
     "aria-label": "Toggle Navigation Menu",
     onClick: toggleSidebar,
     children: "\u2630"
@@ -361,7 +360,7 @@ export default function Layout(_ref6) {
       LinkComponent: LinkComponent,
       githubLink: githubLink,
       topComponent: topComponent,
-      closeSidebar: ready && !isDesktop ? toggleSidebar : undefined,
+      closeSidebar: isMobile ? toggleSidebar : undefined,
       sharedUrls: sharedUrls
     }), /*#__PURE__*/_jsxs("div", {
       className: "".concat(styles.mainContainerContainer, " ").concat(sidebarToggled ? styles.toggled : null),
@@ -375,14 +374,14 @@ export default function Layout(_ref6) {
         githubLink: githubLink,
         sharedUrls: sharedUrls
       })]
-    }), ready && !isDesktop && sidebarOpen ? /*#__PURE__*/_jsx("div", {
+    }), isMobile && sidebarToggled ? /*#__PURE__*/_jsx("div", {
       style: {
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.4)",
         zIndex: "998"
       },
-      onClick: closeSidebar
+      onClick: toggleSidebar
     }) : null, /*#__PURE__*/_jsx(Tooltip, {
       id: "sidebarNavTooltip",
       className: styles.sidebarTooltip,

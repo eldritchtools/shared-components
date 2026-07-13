@@ -110,7 +110,7 @@ export default function Layout({
     title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null,
     githubLink = null, paths = [], LinkComponent = "a", topComponent, children
 }) {
-    const { isDesktop, ready } = useBreakpoint();
+    const { isMobile } = useBreakpoint();
     const initialized = useRef(false);
 
     const [sidebarToggled, setSidebarToggled] = useState(false);
@@ -144,7 +144,7 @@ export default function Layout({
 
     const sidebarButton =
         <button
-            aria-expanded={sidebarOpen ? "true" : "false"}
+            aria-expanded={(isMobile && sidebarToggled) || (!isMobile && !sidebarToggled) ? "true" : "false"}
             aria-label="Toggle Navigation Menu"
             onClick={toggleSidebar}
         >
@@ -163,7 +163,7 @@ export default function Layout({
             LinkComponent={LinkComponent}
             githubLink={githubLink}
             topComponent={topComponent}
-            closeSidebar={(ready && !isDesktop) ? toggleSidebar : undefined}
+            closeSidebar={isMobile ? toggleSidebar : undefined}
             sharedUrls={sharedUrls}
         />
         <div className={`${styles.mainContainerContainer} ${sidebarToggled ? styles.toggled : null}`} >
@@ -172,7 +172,7 @@ export default function Layout({
             </main>
             <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} sharedUrls={sharedUrls} />
         </div>
-        {(ready && !isDesktop && sidebarOpen) ? <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: "998" }} onClick={closeSidebar} /> : null}
+        {(isMobile && sidebarToggled) ? <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: "998" }} onClick={toggleSidebar} /> : null}
 
         <Tooltip
             id={"sidebarNavTooltip"}
