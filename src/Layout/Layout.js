@@ -96,7 +96,6 @@ function Sidebar({ open, paths, LinkComponent = "a", topComponent, githubLink, c
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginTop: "1rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
                     {"discord" in sharedUrls ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
-                    {/* <KoFiIcon /> */}
                 </div>
                 {"discord" in sharedUrls ?
                     <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join our Discord for updates and feedback, or just to chat.</span> :
@@ -114,7 +113,7 @@ export default function Layout({
     const { isDesktop, ready } = useBreakpoint();
     const initialized = useRef(false);
 
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     const [sharedUrls, setSharedUrls] = useState({});
 
     useEffect(() => {
@@ -147,17 +146,18 @@ export default function Layout({
         setSidebarOpen(isDesktop);
         initialized.current = true;
     }, [ready, isDesktop]);
+    
+    const toggleSidebar = () => setSidebarToggled(p => !p);
 
     const sidebarButton =
         <button
             aria-expanded={sidebarOpen ? "true" : "false"}
             aria-label="Toggle Navigation Menu"
-            onClick={() => setSidebarOpen(prev => !prev)}
+            onClick={toggleSidebar}
         >
             ☰
         </button>
 
-    const closeSidebar = () => setSidebarOpen(false);
     // Temp default linksets to deal with cached links.json in R2
     const linksetSource = sharedUrls.linksets || linksets;
     const linksetObject = linkSet in linksetSource ? linksetSource[linkSet] : null
@@ -170,7 +170,7 @@ export default function Layout({
             LinkComponent={LinkComponent}
             githubLink={githubLink}
             topComponent={topComponent}
-            closeSidebar={(ready && !isDesktop) ? closeSidebar : undefined}
+            closeSidebar={(ready && !isDesktop) ? toggleSidebar : undefined}
             sharedUrls={sharedUrls}
         />
         <div style={{ display: "flex", flexDirection: "column", marginLeft: (sidebarOpen && isDesktop) ? "240px" : "0px", overflowY: "auto", transition: "margin-left 0.3s ease" }} >

@@ -275,7 +275,7 @@ export default function Layout(_ref6) {
     isDesktop = _useBreakpoint.isDesktop,
     ready = _useBreakpoint.ready;
   var initialized = useRef(false);
-  var _useState3 = useState(true),
+  var _useState3 = useState(false),
     _useState4 = _slicedToArray(_useState3, 2),
     sidebarOpen = _useState4[0],
     setSidebarOpen = _useState4[1];
@@ -335,19 +335,18 @@ export default function Layout(_ref6) {
     setSidebarOpen(isDesktop);
     initialized.current = true;
   }, [ready, isDesktop]);
+  var toggleSidebar = function toggleSidebar() {
+    return setSidebarToggled(function (p) {
+      return !p;
+    });
+  };
   var sidebarButton = /*#__PURE__*/_jsx("button", {
     "aria-expanded": sidebarOpen ? "true" : "false",
     "aria-label": "Toggle Navigation Menu",
-    onClick: function onClick() {
-      return setSidebarOpen(function (prev) {
-        return !prev;
-      });
-    },
+    onClick: toggleSidebar,
     children: "\u2630"
   });
-  var closeSidebar = function closeSidebar() {
-    return setSidebarOpen(false);
-  };
+
   // Temp default linksets to deal with cached links.json in R2
   var linksetSource = sharedUrls.linksets || linksets;
   var linksetObject = linkSet in linksetSource ? linksetSource[linkSet] : null;
@@ -367,7 +366,7 @@ export default function Layout(_ref6) {
       LinkComponent: LinkComponent,
       githubLink: githubLink,
       topComponent: topComponent,
-      closeSidebar: ready && !isDesktop ? closeSidebar : undefined,
+      closeSidebar: ready && !isDesktop ? toggleSidebar : undefined,
       sharedUrls: sharedUrls
     }), /*#__PURE__*/_jsxs("div", {
       style: {
