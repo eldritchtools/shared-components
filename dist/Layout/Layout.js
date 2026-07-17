@@ -236,10 +236,10 @@ function Sidebar(_ref5) {
         },
         children: [githubLink ? /*#__PURE__*/_jsx(GithubIcon, {
           githubLink: githubLink
-        }) : null, "discord" in sharedUrls ? /*#__PURE__*/_jsx(DiscordIcon, {
+        }) : null, "discord" in sharedUrls && includeDiscord ? /*#__PURE__*/_jsx(DiscordIcon, {
           url: sharedUrls["discord"]
         }) : null]
-      }), "discord" in sharedUrls ? /*#__PURE__*/_jsx("span", {
+      }), "discord" in sharedUrls && includeDiscord ? /*#__PURE__*/_jsx("span", {
         style: {
           fontSize: "0.8rem",
           textAlign: "center",
@@ -267,6 +267,8 @@ export default function Layout(_ref6) {
     githubLink = _ref6$githubLink === void 0 ? null : _ref6$githubLink,
     _ref6$paths = _ref6.paths,
     paths = _ref6$paths === void 0 ? [] : _ref6$paths,
+    _ref6$includeDiscord = _ref6.includeDiscord,
+    includeDiscord = _ref6$includeDiscord === void 0 ? true : _ref6$includeDiscord,
     _ref6$LinkComponent = _ref6.LinkComponent,
     LinkComponent = _ref6$LinkComponent === void 0 ? "a" : _ref6$LinkComponent,
     topComponent = _ref6.topComponent,
@@ -361,7 +363,8 @@ export default function Layout(_ref6) {
       githubLink: githubLink,
       topComponent: topComponent,
       closeSidebar: isMobile ? toggleSidebar : undefined,
-      sharedUrls: sharedUrls
+      sharedUrls: sharedUrls,
+      includeDiscord: includeDiscord
     }), /*#__PURE__*/_jsxs("div", {
       className: "".concat(styles.mainContainerContainer, " ").concat(sidebarToggled ? styles.toggled : null),
       children: [/*#__PURE__*/_jsx("main", {
