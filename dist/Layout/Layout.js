@@ -211,7 +211,8 @@ function Sidebar(_ref5) {
     topComponent = _ref5.topComponent,
     githubLink = _ref5.githubLink,
     closeSidebar = _ref5.closeSidebar,
-    sharedUrls = _ref5.sharedUrls;
+    sharedUrls = _ref5.sharedUrls,
+    includeDiscord = _ref5.includeDiscord;
   return /*#__PURE__*/_jsxs("div", {
     className: "".concat(styles.sidebar, " ").concat(sidebarToggled ? styles.toggled : null),
     children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {

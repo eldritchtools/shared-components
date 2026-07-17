@@ -87,7 +87,7 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
     </nav>
 }
 
-function Sidebar({ sidebarToggled, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls }) {
+function Sidebar({ sidebarToggled, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls, includeDiscord }) {
     return (
         <div className={`${styles.sidebar} ${sidebarToggled ? styles.toggled : null}`}>
             {topComponent ? topComponent : null}
