@@ -12,7 +12,8 @@ function DesktopFooter(_ref) {
       alignItems: "start",
       width: "100%",
       maxWidth: "1400px",
-      margin: "0 auto"
+      margin: "0 auto",
+      paddingBottom: "2rem"
     },
     children: [/*#__PURE__*/_jsx("div", {
       style: {
@@ -43,7 +44,8 @@ function MobileFooter(_ref2) {
   return /*#__PURE__*/_jsxs("div", {
     style: {
       maxWidth: "700px",
-      margin: "0 auto"
+      margin: "0 auto",
+      paddingBottom: "2rem"
     },
     children: [topComponent, /*#__PURE__*/_jsx("p", {
       style: {

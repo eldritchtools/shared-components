@@ -4,7 +4,7 @@ function DesktopFooter({ disclaimer, topComponent, leftComponent, rightComponent
     return <div
         style={{
             display: "grid", gridTemplateColumns: "1fr minmax(0, 700px) 1fr", alignItems: "start",
-            width: "100%", maxWidth: "1400px", margin: "0 auto",
+            width: "100%", maxWidth: "1400px", margin: "0 auto", paddingBottom: "2rem"
         }}
     >
         <div style={{ justifySelf: "start" }}>
@@ -26,7 +26,7 @@ function DesktopFooter({ disclaimer, topComponent, leftComponent, rightComponent
 }
 
 function MobileFooter({ disclaimer, topComponent }) {
-    return <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+    return <div style={{ maxWidth: "700px", margin: "0 auto", paddingBottom: "2rem" }}>
         {topComponent}
 
         <p style={{ fontSize: "0.8rem" }}>
