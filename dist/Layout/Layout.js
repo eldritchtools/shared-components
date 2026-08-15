@@ -84,17 +84,6 @@ function MultiPath(_ref3) {
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
     setOpen = _useState2[1];
-  var toggleStyle = {
-    width: "16px",
-    height: "16px",
-    border: "none",
-    background: "none",
-    cursor: "pointer",
-    padding: 0,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  };
   return /*#__PURE__*/_jsxs("div", {
     style: {
       display: "flex",
@@ -115,7 +104,7 @@ function MultiPath(_ref3) {
           LinkComponent: LinkComponent,
           closeSidebar: closeSidebar
         }), /*#__PURE__*/_jsx("button", {
-          style: toggleStyle,
+          className: styles.sidebarArrowToggle,
           onClick: function onClick(e) {
             e.stopPropagation();
             setOpen(function (o) {
@@ -148,7 +137,7 @@ function MultiPath(_ref3) {
           children: [/*#__PURE__*/_jsx("span", {
             children: path.title
           }), /*#__PURE__*/_jsx("span", {
-            style: toggleStyle,
+            className: styles.sidebarArrowToggle,
             children: /*#__PURE__*/_jsx(ArrowIcon, {
               open: open
             })
@@ -209,13 +198,14 @@ function Sidebar(_ref5) {
     _ref5$LinkComponent = _ref5.LinkComponent,
     LinkComponent = _ref5$LinkComponent === void 0 ? "a" : _ref5$LinkComponent,
     topComponent = _ref5.topComponent,
+    bottomComponent = _ref5.bottomComponent,
     githubLink = _ref5.githubLink,
     closeSidebar = _ref5.closeSidebar,
     sharedUrls = _ref5.sharedUrls,
     includeDiscord = _ref5.includeDiscord;
   return /*#__PURE__*/_jsxs("div", {
     className: "".concat(styles.sidebar, " ").concat(sidebarToggled ? styles.toggled : null),
-    children: [topComponent ? topComponent : null, /*#__PURE__*/_jsx(Navigation, {
+    children: [topComponent, /*#__PURE__*/_jsx(Navigation, {
       paths: paths,
       LinkComponent: LinkComponent,
       closeSidebar: closeSidebar
@@ -248,7 +238,7 @@ function Sidebar(_ref5) {
         },
         children: "Join our Discord for updates and feedback, or just to chat."
       }) : null]
-    })]
+    }), bottomComponent]
   });
 }
 export default function Layout(_ref6) {
@@ -272,7 +262,13 @@ export default function Layout(_ref6) {
     includeDiscord = _ref6$includeDiscord === void 0 ? true : _ref6$includeDiscord,
     _ref6$LinkComponent = _ref6.LinkComponent,
     LinkComponent = _ref6$LinkComponent === void 0 ? "a" : _ref6$LinkComponent,
-    topComponent = _ref6.topComponent,
+    headerLeftComponent = _ref6.headerLeftComponent,
+    headerRightComponent = _ref6.headerRightComponent,
+    sidebarTopComponent = _ref6.sidebarTopComponent,
+    sidebarBottomComponent = _ref6.sidebarBottomComponent,
+    footerTopComponent = _ref6.footerTopComponent,
+    footerLeftComponent = _ref6.footerLeftComponent,
+    footerRightComponent = _ref6.footerRightComponent,
     children = _ref6.children;
   var _useBreakpoint = useBreakpoint(),
     isMobile = _useBreakpoint.isMobile;
@@ -356,13 +352,16 @@ export default function Layout(_ref6) {
       title: title,
       linkSet: linksetObject,
       lastUpdated: lastUpdated,
-      sidebarButton: sidebarButton
+      sidebarButton: sidebarButton,
+      leftComponent: headerLeftComponent,
+      rightComponent: headerRightComponent
     }), /*#__PURE__*/_jsx(Sidebar, {
       sidebarToggled: sidebarToggled,
       paths: paths,
       LinkComponent: LinkComponent,
       githubLink: githubLink,
-      topComponent: topComponent,
+      topComponent: sidebarTopComponent,
+      bottomComponent: sidebarBottomComponent,
       closeSidebar: isMobile ? toggleSidebar : undefined,
       sharedUrls: sharedUrls,
       includeDiscord: includeDiscord
@@ -372,11 +371,11 @@ export default function Layout(_ref6) {
         className: styles.mainContainer,
         children: children
       }), /*#__PURE__*/_jsx(Footer, {
-        description: description,
         gameName: gameName,
         developerName: developerName,
-        githubLink: githubLink,
-        sharedUrls: sharedUrls
+        topComponent: footerTopComponent,
+        leftComponent: footerLeftComponent,
+        rightComponent: footerRightComponent
       })]
     }), isMobile && sidebarToggled ? /*#__PURE__*/_jsx("div", {
       style: {

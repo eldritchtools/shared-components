@@ -29,45 +29,51 @@ function DesktopHeader(_ref) {
     _ref$lastUpdated = _ref.lastUpdated,
     lastUpdated = _ref$lastUpdated === void 0 ? null : _ref$lastUpdated,
     _ref$sidebarButton = _ref.sidebarButton,
-    sidebarButton = _ref$sidebarButton === void 0 ? null : _ref$sidebarButton;
+    sidebarButton = _ref$sidebarButton === void 0 ? null : _ref$sidebarButton,
+    leftComponent = _ref.leftComponent,
+    rightComponent = _ref.rightComponent;
   return /*#__PURE__*/_jsxs("div", {
     style: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      paddingRight: "1rem"
+      display: "grid",
+      gridTemplateColumns: "1fr auto 1fr",
+      alignItems: "center"
     },
     children: [/*#__PURE__*/_jsxs("div", {
       style: {
         display: "flex",
-        flexDirection: "row",
-        gap: "0.75rem",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 0.5rem"
       },
-      children: [sidebarButton, /*#__PURE__*/_jsx("a", {
-        "aria-label": "Eldritch Tools Home",
-        href: "https://eldritchtools.com/",
-        children: /*#__PURE__*/_jsx("img", {
-          src: logob64,
-          alt: "Eldritch Tools",
-          width: 32,
-          height: 32,
-          style: {
-            borderRadius: "50%"
-          }
-        })
-      }), linkSet && linkSet.links.length > 1 ? /*#__PURE__*/_jsx(HeaderDropdown, {
-        name: linkSet.name,
-        links: linkSet.links
-      }) : null]
+      children: [/*#__PURE__*/_jsxs("div", {
+        style: {
+          display: "flex",
+          gap: "0.75rem",
+          alignItems: "center",
+          minWidth: 0
+        },
+        children: [sidebarButton, /*#__PURE__*/_jsx("a", {
+          "aria-label": "Eldritch Tools Home",
+          href: "https://eldritchtools.com/",
+          children: /*#__PURE__*/_jsx("img", {
+            src: logob64,
+            alt: "Eldritch Tools",
+            width: 32,
+            height: 32,
+            style: {
+              borderRadius: "50%"
+            }
+          })
+        }), linkSet && linkSet.links.length > 1 ? /*#__PURE__*/_jsx(HeaderDropdown, {
+          name: linkSet.name,
+          links: linkSet.links
+        }) : null]
+      }), leftComponent]
     }), /*#__PURE__*/_jsx("h1", {
       style: {
         margin: 0,
         fontSize: "1.25rem",
         fontWeight: "bold",
-        position: "absolute",
-        left: "50%",
-        transform: "translateX(-50%)",
         textAlign: "center"
       },
       children: /*#__PURE__*/_jsx("a", {
@@ -79,14 +85,31 @@ function DesktopHeader(_ref) {
         },
         children: title
       })
-    }), /*#__PURE__*/_jsx("div", {
+    }), /*#__PURE__*/_jsxs("div", {
       style: {
-        fontWeight: "normal",
-        fontSize: "0.85rem",
-        opacity: 0.75,
-        textAlign: "right"
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 0.5rem"
       },
-      children: lastUpdated ? "Last updated: ".concat(formatLastUpdated(lastUpdated)) : null
+      children: [rightComponent !== null && rightComponent !== void 0 ? rightComponent : /*#__PURE__*/_jsx("div", {}), /*#__PURE__*/_jsx("div", {
+        style: {
+          display: "flex",
+          flexDirection: "row",
+          gap: "0.75rem",
+          alignItems: "center",
+          minWidth: 0
+        },
+        children: lastUpdated && /*#__PURE__*/_jsx("span", {
+          style: {
+            fontWeight: "normal",
+            fontSize: "0.85rem",
+            opacity: 0.75,
+            textAlign: "right"
+          },
+          children: "Last updated: ".concat(formatLastUpdated(lastUpdated))
+        })
+      })]
     })]
   });
 }
@@ -173,7 +196,7 @@ function MobileHeader(_ref3) {
       })
     }), /*#__PURE__*/_jsxs("div", {
       style: {
-        display: "relative"
+        position: "relative"
       },
       children: [/*#__PURE__*/_jsx("button", {
         onClick: function onClick() {
@@ -208,7 +231,7 @@ function MobileHeader(_ref3) {
     })]
   });
 }
-function Header(_ref4) {
+export default function Header(_ref4) {
   var _ref4$title = _ref4.title,
     title = _ref4$title === void 0 ? null : _ref4$title,
     _ref4$linkSet = _ref4.linkSet,
@@ -216,7 +239,9 @@ function Header(_ref4) {
     _ref4$lastUpdated = _ref4.lastUpdated,
     lastUpdated = _ref4$lastUpdated === void 0 ? null : _ref4$lastUpdated,
     _ref4$sidebarButton = _ref4.sidebarButton,
-    sidebarButton = _ref4$sidebarButton === void 0 ? null : _ref4$sidebarButton;
+    sidebarButton = _ref4$sidebarButton === void 0 ? null : _ref4$sidebarButton,
+    leftComponent = _ref4.leftComponent,
+    rightComponent = _ref4.rightComponent;
   var _useBreakpoint = useBreakpoint(),
     isDesktop = _useBreakpoint.isDesktop,
     ready = _useBreakpoint.ready;
@@ -237,7 +262,9 @@ function Header(_ref4) {
       title: title,
       linkSet: linkSet,
       lastUpdated: lastUpdated,
-      sidebarButton: sidebarButton
+      sidebarButton: sidebarButton,
+      leftComponent: leftComponent,
+      rightComponent: rightComponent
     }) : /*#__PURE__*/_jsx(MobileHeader, {
       title: title,
       linkSet: linkSet,
@@ -246,4 +273,3 @@ function Header(_ref4) {
     }) : null
   });
 }
-export default Header;

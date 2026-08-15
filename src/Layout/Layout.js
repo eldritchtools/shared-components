@@ -25,8 +25,16 @@ const ArrowIcon = ({ open }) => (
 
 function PathLink({ path, styleOverride, LinkComponent, closeSidebar }) {
     if ("tooltip" in path) {
-        return <div data-tooltip-id="sidebarNavTooltip" data-tooltip-content={path.tooltip} style={{ display: "flex", width: "100%", height: "auto" }}>
-            <LinkComponent className={styles.sidebarButton} style={{ ...styleOverride, width: "100%", height: "auto" }} href={path.path} onClick={closeSidebar}>
+        return <div
+            data-tooltip-id="sidebarNavTooltip"
+            data-tooltip-content={path.tooltip}
+            style={{ display: "flex", width: "100%", height: "auto" }}
+        >
+            <LinkComponent
+                className={styles.sidebarButton}
+                style={{ ...styleOverride, width: "100%", height: "auto" }}
+                href={path.path} onClick={closeSidebar}
+            >
                 {path.title}
             </LinkComponent>
         </div>
@@ -40,28 +48,25 @@ function PathLink({ path, styleOverride, LinkComponent, closeSidebar }) {
 function MultiPath({ path, LinkComponent, closeSidebar }) {
     const [open, setOpen] = useState(false);
 
-    const toggleStyle = {
-        width: "16px",
-        height: "16px",
-        border: "none",
-        background: "none",
-        cursor: "pointer",
-        padding: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-    };
-
     return <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             {path.path ? <>
                 <PathLink path={path} styleOverride={{ flex: 1 }} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
-                <button style={toggleStyle} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}><ArrowIcon open={open} /></button>
+                <button
+                    className={styles.sidebarArrowToggle}
+                    onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}
+                >
+                    <ArrowIcon open={open} />
+                </button>
             </> :
-                <button className={styles.sidebarButton} style={{ border: "none", width: "100%", paddingRight: "4px" }} onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}>
+                <button
+                    className={styles.sidebarButton}
+                    style={{ border: "none", width: "100%", paddingRight: "4px" }}
+                    onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}
+                >
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <span>{path.title}</span>
-                        <span style={toggleStyle}><ArrowIcon open={open} /></span>
+                        <span className={styles.sidebarArrowToggle}><ArrowIcon open={open} /></span>
                     </div>
                 </button>
             }
@@ -69,7 +74,11 @@ function MultiPath({ path, LinkComponent, closeSidebar }) {
 
         <div style={{ display: open ? "flex" : "none", flexDirection: "column", paddingLeft: "16px" }}>
             {path.subpaths.map((subpath, i) =>
-                <PathLink key={i} path={subpath} styleOverride={{ fontSize: "1rem", fontWeight: "500", padding: "4px 6px" }} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
+                <PathLink
+                    key={i} path={subpath}
+                    styleOverride={{ fontSize: "1rem", fontWeight: "500", padding: "4px 6px" }}
+                    LinkComponent={LinkComponent} closeSidebar={closeSidebar}
+                />
             )}
         </div>
     </div>
@@ -87,28 +96,42 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
     </nav>
 }
 
-function Sidebar({ sidebarToggled, paths, LinkComponent = "a", topComponent, githubLink, closeSidebar, sharedUrls, includeDiscord }) {
+function Sidebar({
+    sidebarToggled, paths, LinkComponent = "a",
+    topComponent, bottomComponent, githubLink,
+    closeSidebar, sharedUrls, includeDiscord
+}) {
     return (
         <div className={`${styles.sidebar} ${sidebarToggled ? styles.toggled : null}`}>
-            {topComponent ? topComponent : null}
+            {topComponent}
             <Navigation paths={paths} LinkComponent={LinkComponent} closeSidebar={closeSidebar} />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", borderTop: `1px var(--primary-border-color) solid`, gap: "0.5rem" }}>
+            <div style={{
+                display: "flex", flexDirection: "column", alignItems: "center",
+                borderTop: `1px var(--primary-border-color) solid`, gap: "0.5rem"
+            }}>
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginTop: "1rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
                     {"discord" in sharedUrls && includeDiscord ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
                 </div>
                 {"discord" in sharedUrls && includeDiscord ?
-                    <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>Join our Discord for updates and feedback, or just to chat.</span> :
+                    <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>
+                        Join our Discord for updates and feedback, or just to chat.
+                    </span> :
                     null
                 }
             </div>
+            {bottomComponent}
         </div>
     );
 }
 
 export default function Layout({
     title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null,
-    githubLink = null, paths = [], includeDiscord = true, LinkComponent = "a", topComponent, children
+    githubLink = null, paths = [], includeDiscord = true, LinkComponent = "a",
+    headerLeftComponent, headerRightComponent,
+    sidebarTopComponent, sidebarBottomComponent,
+    footerTopComponent, footerLeftComponent, footerRightComponent,
+    children
 }) {
     const { isMobile } = useBreakpoint();
     const initialized = useRef(false);
@@ -156,13 +179,18 @@ export default function Layout({
     const linksetObject = linkSet in linksetSource ? linksetSource[linkSet] : null
 
     return <div style={{ display: "flex", flexDirection: "column" }}>
-        <Header title={title} linkSet={linksetObject} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
+        <Header
+            title={title} linkSet={linksetObject}
+            lastUpdated={lastUpdated} sidebarButton={sidebarButton}
+            leftComponent={headerLeftComponent} rightComponent={headerRightComponent}
+        />
         <Sidebar
             sidebarToggled={sidebarToggled}
             paths={paths}
             LinkComponent={LinkComponent}
             githubLink={githubLink}
-            topComponent={topComponent}
+            topComponent={sidebarTopComponent}
+            bottomComponent={sidebarBottomComponent}
             closeSidebar={isMobile ? toggleSidebar : undefined}
             sharedUrls={sharedUrls}
             includeDiscord={includeDiscord}
@@ -171,9 +199,15 @@ export default function Layout({
             <main className={styles.mainContainer}>
                 {children}
             </main>
-            <Footer description={description} gameName={gameName} developerName={developerName} githubLink={githubLink} sharedUrls={sharedUrls} />
+            <Footer
+                gameName={gameName} developerName={developerName}
+                topComponent={footerTopComponent} leftComponent={footerLeftComponent} rightComponent={footerRightComponent}
+            />
         </div>
-        {(isMobile && sidebarToggled) ? <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: "998" }} onClick={toggleSidebar} /> : null}
+        {(isMobile && sidebarToggled) ?
+            <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: "998" }} onClick={toggleSidebar} /> :
+            null
+        }
 
         <Tooltip
             id={"sidebarNavTooltip"}

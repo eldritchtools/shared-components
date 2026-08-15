@@ -19,24 +19,34 @@ function formatLastUpdated(isoString) {
     });
 }
 
-function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
-    return <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: "1rem" }}>
-        <div style={{ display: "flex", flexDirection: "row", gap: "0.75rem", alignItems: "center" }}>
-            {sidebarButton}
-            <a aria-label="Eldritch Tools Home" href="https://eldritchtools.com/">
-                <img src={logob64} alt="Eldritch Tools" width={32} height={32} style={{ borderRadius: "50%" }} />
-            </a>
-            {linkSet && linkSet.links.length > 1 ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
+function DesktopHeader({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null, leftComponent, rightComponent }) {
+    return <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 0.5rem" }}>
+            <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", minWidth: 0 }}>
+                {sidebarButton}
+                <a aria-label="Eldritch Tools Home" href="https://eldritchtools.com/">
+                    <img src={logob64} alt="Eldritch Tools" width={32} height={32} style={{ borderRadius: "50%" }} />
+                </a>
+                {linkSet && linkSet.links.length > 1 ? <HeaderDropdown name={linkSet.name} links={linkSet.links} /> : null}
+            </div>
+            {leftComponent}
         </div>
 
-        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", position: "absolute", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
+        <h1 style={{ margin: 0, fontSize: "1.25rem", fontWeight: "bold", textAlign: "center" }}>
             <a href={"/"} style={{ color: "var(--primary-text-color, #ddd)", textDecoration: "none", cursor: "pointer" }}>
                 {title}
             </a>
         </h1>
 
-        <div style={{ fontWeight: "normal", fontSize: "0.85rem", opacity: 0.75, textAlign: "right" }}>
-            {lastUpdated ? `Last updated: ${formatLastUpdated(lastUpdated)}` : null}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 0.5rem" }}>
+            {rightComponent ?? <div />}
+            <div style={{ display: "flex", flexDirection: "row", gap: "0.75rem", alignItems: "center", minWidth: 0 }}>
+                {lastUpdated &&
+                    <span style={{ fontWeight: "normal", fontSize: "0.85rem", opacity: 0.75, textAlign: "right" }}>
+                        {`Last updated: ${formatLastUpdated(lastUpdated)}`}
+                    </span>
+                }
+            </div>
         </div>
     </div>
 }
@@ -73,7 +83,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
             </a>
         </h1>
 
-        <div style={{ display: "relative" }}>
+        <div style={{ position: "relative" }}>
             <button onClick={() => setSubmenuOpen(!submenuOpen)} >
                 <MoreIcon />
             </button>
@@ -101,7 +111,7 @@ function MobileHeader({ title = null, linkSet = null, lastUpdated = null, sideba
     </div>
 }
 
-function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null }) {
+export default function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButton = null, leftComponent, rightComponent }) {
     const { isDesktop, ready } = useBreakpoint();
 
     return (
@@ -121,12 +131,14 @@ function Header({ title = null, linkSet = null, lastUpdated = null, sidebarButto
         >
             {ready ? (
                 isDesktop ?
-                    <DesktopHeader title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} /> :
+                    <DesktopHeader
+                        title={title} linkSet={linkSet}
+                        lastUpdated={lastUpdated} sidebarButton={sidebarButton}
+                        leftComponent={leftComponent} rightComponent={rightComponent}
+                    /> :
                     <MobileHeader title={title} linkSet={linkSet} lastUpdated={lastUpdated} sidebarButton={sidebarButton} />
             ) : null}
 
         </header>
     );
 }
-
-export default Header;
