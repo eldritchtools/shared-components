@@ -8,16 +8,14 @@
     padding-bottom: 2rem;
 }
 
-.footerLeft {
-    justify-self: start;
+.footerLeft,
+.footerRight {
+    min-width: 0;
+    width: 100%;
 }
 
 .footerCenter {
     text-align: center;
-}
-
-.footerRight {
-    justify-self: end;
 }
 
 @media (max-width: 768px) {
