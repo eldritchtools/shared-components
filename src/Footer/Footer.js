@@ -1,6 +1,6 @@
 import styles from "./Footer.module.css";
 
-export default function Footer({ gameName, developerName, topComponent, leftComponent, rightComponent }) {
+export default function Footer({ gameName, developerName, topComponent, bottomComponent, leftComponent, rightComponent }) {
     const disclaimer =
         `This tool is a fan-made project and is not affiliated with or endorsed by ${developerName}. ` +
         `${gameName} and all related assets are © ${developerName}. ` +
@@ -19,6 +19,7 @@ export default function Footer({ gameName, developerName, topComponent, leftComp
 
                 <div className={styles.footerCenter}>
                     {topComponent}
+                    {bottomComponent}
 
                     <p style={{ fontSize: "0.8rem" }}>
                         {disclaimer}

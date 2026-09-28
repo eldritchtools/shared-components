@@ -4,6 +4,7 @@ export default function Footer(_ref) {
   var gameName = _ref.gameName,
     developerName = _ref.developerName,
     topComponent = _ref.topComponent,
+    bottomComponent = _ref.bottomComponent,
     leftComponent = _ref.leftComponent,
     rightComponent = _ref.rightComponent;
   var disclaimer = "This tool is a fan-made project and is not affiliated with or endorsed by ".concat(developerName, ". ") + "".concat(gameName, " and all related assets are \xA9 ").concat(developerName, ". ") + "All rights reserved to their respective owners.";
@@ -25,7 +26,7 @@ export default function Footer(_ref) {
         children: leftComponent
       }), /*#__PURE__*/_jsxs("div", {
         className: styles.footerCenter,
-        children: [topComponent, /*#__PURE__*/_jsx("p", {
+        children: [topComponent, bottomComponent, /*#__PURE__*/_jsx("p", {
           style: {
             fontSize: "0.8rem"
           },

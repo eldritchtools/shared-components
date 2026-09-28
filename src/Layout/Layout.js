@@ -101,6 +101,9 @@ function Sidebar({
     topComponent, bottomComponent, githubLink,
     closeSidebar, sharedUrls, includeDiscord
 }) {
+    const { isMobile } = useBreakpoint();
+    const sidebarVisible = isMobile ? sidebarToggled : !sidebarToggled;
+    
     return (
         <div className={`${styles.sidebar} ${sidebarToggled ? styles.toggled : null}`}>
             {topComponent}
@@ -120,7 +123,7 @@ function Sidebar({
                     null
                 }
             </div>
-            {bottomComponent}
+            {sidebarVisible && bottomComponent}
         </div>
     );
 }
@@ -130,7 +133,7 @@ export default function Layout({
     githubLink = null, paths = [], includeDiscord = true, LinkComponent = "a",
     headerLeftComponent, headerRightComponent,
     sidebarTopComponent, sidebarBottomComponent,
-    footerTopComponent, footerLeftComponent, footerRightComponent,
+    footerTopComponent, footerBottomComponent, footerLeftComponent, footerRightComponent,
     children
 }) {
     const { isMobile } = useBreakpoint();
@@ -201,7 +204,8 @@ export default function Layout({
             </main>
             <Footer
                 gameName={gameName} developerName={developerName}
-                topComponent={footerTopComponent} leftComponent={footerLeftComponent} rightComponent={footerRightComponent}
+                topComponent={footerTopComponent} bottomComponent={footerBottomComponent}
+                leftComponent={footerLeftComponent} rightComponent={footerRightComponent}
             />
         </div>
         {(isMobile && sidebarToggled) ?

@@ -203,6 +203,9 @@ function Sidebar(_ref5) {
     closeSidebar = _ref5.closeSidebar,
     sharedUrls = _ref5.sharedUrls,
     includeDiscord = _ref5.includeDiscord;
+  var _useBreakpoint = useBreakpoint(),
+    isMobile = _useBreakpoint.isMobile;
+  var sidebarVisible = isMobile ? sidebarToggled : !sidebarToggled;
   return /*#__PURE__*/_jsxs("div", {
     className: "".concat(styles.sidebar, " ").concat(sidebarToggled ? styles.toggled : null),
     children: [topComponent, /*#__PURE__*/_jsx(Navigation, {
@@ -238,7 +241,7 @@ function Sidebar(_ref5) {
         },
         children: "Join our Discord for updates and feedback, or just to chat."
       }) : null]
-    }), bottomComponent]
+    }), sidebarVisible && bottomComponent]
   });
 }
 export default function Layout(_ref6) {
@@ -267,11 +270,12 @@ export default function Layout(_ref6) {
     sidebarTopComponent = _ref6.sidebarTopComponent,
     sidebarBottomComponent = _ref6.sidebarBottomComponent,
     footerTopComponent = _ref6.footerTopComponent,
+    footerBottomComponent = _ref6.footerBottomComponent,
     footerLeftComponent = _ref6.footerLeftComponent,
     footerRightComponent = _ref6.footerRightComponent,
     children = _ref6.children;
-  var _useBreakpoint = useBreakpoint(),
-    isMobile = _useBreakpoint.isMobile;
+  var _useBreakpoint2 = useBreakpoint(),
+    isMobile = _useBreakpoint2.isMobile;
   var initialized = useRef(false);
   var _useState3 = useState(false),
     _useState4 = _slicedToArray(_useState3, 2),
@@ -374,6 +378,7 @@ export default function Layout(_ref6) {
         gameName: gameName,
         developerName: developerName,
         topComponent: footerTopComponent,
+        bottomComponent: footerBottomComponent,
         leftComponent: footerLeftComponent,
         rightComponent: footerRightComponent
       })]
