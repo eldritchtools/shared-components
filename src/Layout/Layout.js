@@ -131,7 +131,7 @@ function Sidebar({
 export default function Layout({
     title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null,
     githubLink = null, paths = [], includeDiscord = true, LinkComponent = "a",
-    headerLeftComponent, headerRightComponent,
+    headerLeftComponent, headerRightComponent, headerCenterOverride,
     sidebarTopComponent, sidebarBottomComponent,
     footerTopComponent, footerBottomComponent, footerLeftComponent, footerRightComponent,
     children
@@ -185,6 +185,7 @@ export default function Layout({
         <Header
             title={title} linkSet={linksetObject}
             lastUpdated={lastUpdated} sidebarButton={sidebarButton}
+            headerCenterOverride={headerCenterOverride}
             leftComponent={headerLeftComponent} rightComponent={headerRightComponent}
         />
         <Sidebar

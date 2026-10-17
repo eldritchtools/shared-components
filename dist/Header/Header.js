@@ -31,7 +31,8 @@ function DesktopHeader(_ref) {
     _ref$sidebarButton = _ref.sidebarButton,
     sidebarButton = _ref$sidebarButton === void 0 ? null : _ref$sidebarButton,
     leftComponent = _ref.leftComponent,
-    rightComponent = _ref.rightComponent;
+    rightComponent = _ref.rightComponent,
+    headerCenterOverride = _ref.headerCenterOverride;
   return /*#__PURE__*/_jsxs("div", {
     style: {
       display: "grid",
@@ -69,7 +70,7 @@ function DesktopHeader(_ref) {
           links: linkSet.links
         }) : null]
       }), leftComponent]
-    }), /*#__PURE__*/_jsx("h1", {
+    }), headerCenterOverride ? headerCenterOverride : /*#__PURE__*/_jsx("h1", {
       style: {
         margin: 0,
         fontSize: "1.25rem",
@@ -144,7 +145,8 @@ function MobileHeader(_ref3) {
     _ref3$lastUpdated = _ref3.lastUpdated,
     lastUpdated = _ref3$lastUpdated === void 0 ? null : _ref3$lastUpdated,
     _ref3$sidebarButton = _ref3.sidebarButton,
-    sidebarButton = _ref3$sidebarButton === void 0 ? null : _ref3$sidebarButton;
+    sidebarButton = _ref3$sidebarButton === void 0 ? null : _ref3$sidebarButton,
+    headerCenterOverride = _ref3.headerCenterOverride;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     submenuOpen = _useState2[0],
@@ -175,7 +177,7 @@ function MobileHeader(_ref3) {
           }
         })
       })]
-    }), /*#__PURE__*/_jsx("h1", {
+    }), headerCenterOverride ? headerCenterOverride : /*#__PURE__*/_jsx("h1", {
       style: {
         margin: 0,
         fontSize: "1.25rem",
@@ -240,6 +242,7 @@ export default function Header(_ref4) {
     lastUpdated = _ref4$lastUpdated === void 0 ? null : _ref4$lastUpdated,
     _ref4$sidebarButton = _ref4.sidebarButton,
     sidebarButton = _ref4$sidebarButton === void 0 ? null : _ref4$sidebarButton,
+    headerCenterOverride = _ref4.headerCenterOverride,
     leftComponent = _ref4.leftComponent,
     rightComponent = _ref4.rightComponent;
   var _useBreakpoint = useBreakpoint(),
@@ -263,13 +266,15 @@ export default function Header(_ref4) {
       linkSet: linkSet,
       lastUpdated: lastUpdated,
       sidebarButton: sidebarButton,
+      headerCenterOverride: headerCenterOverride,
       leftComponent: leftComponent,
       rightComponent: rightComponent
     }) : /*#__PURE__*/_jsx(MobileHeader, {
       title: title,
       linkSet: linkSet,
       lastUpdated: lastUpdated,
-      sidebarButton: sidebarButton
+      sidebarButton: sidebarButton,
+      headerCenterOverride: headerCenterOverride
     }) : null
   });
 }

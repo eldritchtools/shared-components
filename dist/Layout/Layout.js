@@ -267,6 +267,7 @@ export default function Layout(_ref6) {
     LinkComponent = _ref6$LinkComponent === void 0 ? "a" : _ref6$LinkComponent,
     headerLeftComponent = _ref6.headerLeftComponent,
     headerRightComponent = _ref6.headerRightComponent,
+    headerCenterOverride = _ref6.headerCenterOverride,
     sidebarTopComponent = _ref6.sidebarTopComponent,
     sidebarBottomComponent = _ref6.sidebarBottomComponent,
     footerTopComponent = _ref6.footerTopComponent,
@@ -357,6 +358,7 @@ export default function Layout(_ref6) {
       linkSet: linksetObject,
       lastUpdated: lastUpdated,
       sidebarButton: sidebarButton,
+      headerCenterOverride: headerCenterOverride,
       leftComponent: headerLeftComponent,
       rightComponent: headerRightComponent
     }), /*#__PURE__*/_jsx(Sidebar, {
