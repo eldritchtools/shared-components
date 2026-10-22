@@ -373,7 +373,7 @@ export default function Layout(_ref6) {
       closeSidebar: isMobile ? toggleSidebar : undefined,
       sharedUrls: sharedUrls,
       includeDiscord: includeDiscord,
-      additionalSidebarLinks: additionalSidebarIcons
+      additionalSidebarIcons: additionalSidebarIcons
     }), /*#__PURE__*/_jsxs("div", {
       className: "".concat(styles.mainContainerContainer, " ").concat(sidebarToggled ? styles.toggled : null),
       children: [/*#__PURE__*/_jsx("main", {

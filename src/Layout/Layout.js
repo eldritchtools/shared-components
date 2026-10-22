@@ -200,7 +200,7 @@ export default function Layout({
             closeSidebar={isMobile ? toggleSidebar : undefined}
             sharedUrls={sharedUrls}
             includeDiscord={includeDiscord}
-            additionalSidebarLinks={additionalSidebarIcons}
+            additionalSidebarIcons={additionalSidebarIcons}
         />
         <div className={`${styles.mainContainerContainer} ${sidebarToggled ? styles.toggled : null}`} >
             <main className={styles.mainContainer}>
