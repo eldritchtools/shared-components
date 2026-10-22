@@ -99,7 +99,8 @@ function Navigation({ paths, LinkComponent, closeSidebar }) {
 function Sidebar({
     sidebarToggled, paths, LinkComponent = "a",
     topComponent, bottomComponent, githubLink,
-    closeSidebar, sharedUrls, includeDiscord
+    closeSidebar, sharedUrls, includeDiscord,
+    additionalSidebarIcons
 }) {
     const { isMobile } = useBreakpoint();
     const sidebarVisible = isMobile ? sidebarToggled : !sidebarToggled;
@@ -115,6 +116,7 @@ function Sidebar({
                 <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginTop: "1rem" }}>
                     {githubLink ? <GithubIcon githubLink={githubLink} /> : null}
                     {"discord" in sharedUrls && includeDiscord ? <DiscordIcon url={sharedUrls["discord"]} /> : null}
+                    {additionalSidebarIcons}
                 </div>
                 {"discord" in sharedUrls && includeDiscord ?
                     <span style={{ fontSize: "0.8rem", textAlign: "center", width: "80%" }}>
@@ -132,7 +134,7 @@ export default function Layout({
     title = null, linkSet = null, lastUpdated = null, description = null, gameName = null, developerName = null,
     githubLink = null, paths = [], includeDiscord = true, LinkComponent = "a",
     headerLeftComponent, headerRightComponent, headerCenterOverride,
-    sidebarTopComponent, sidebarBottomComponent,
+    sidebarTopComponent, sidebarBottomComponent, additionalSidebarIcons,
     footerTopComponent, footerBottomComponent, footerLeftComponent, footerRightComponent,
     children
 }) {
@@ -198,6 +200,7 @@ export default function Layout({
             closeSidebar={isMobile ? toggleSidebar : undefined}
             sharedUrls={sharedUrls}
             includeDiscord={includeDiscord}
+            additionalSidebarLinks={additionalSidebarIcons}
         />
         <div className={`${styles.mainContainerContainer} ${sidebarToggled ? styles.toggled : null}`} >
             <main className={styles.mainContainer}>

@@ -202,7 +202,8 @@ function Sidebar(_ref5) {
     githubLink = _ref5.githubLink,
     closeSidebar = _ref5.closeSidebar,
     sharedUrls = _ref5.sharedUrls,
-    includeDiscord = _ref5.includeDiscord;
+    includeDiscord = _ref5.includeDiscord,
+    additionalSidebarIcons = _ref5.additionalSidebarIcons;
   var _useBreakpoint = useBreakpoint(),
     isMobile = _useBreakpoint.isMobile;
   var sidebarVisible = isMobile ? sidebarToggled : !sidebarToggled;
@@ -232,7 +233,7 @@ function Sidebar(_ref5) {
           githubLink: githubLink
         }) : null, "discord" in sharedUrls && includeDiscord ? /*#__PURE__*/_jsx(DiscordIcon, {
           url: sharedUrls["discord"]
-        }) : null]
+        }) : null, additionalSidebarIcons]
       }), "discord" in sharedUrls && includeDiscord ? /*#__PURE__*/_jsx("span", {
         style: {
           fontSize: "0.8rem",
@@ -270,6 +271,7 @@ export default function Layout(_ref6) {
     headerCenterOverride = _ref6.headerCenterOverride,
     sidebarTopComponent = _ref6.sidebarTopComponent,
     sidebarBottomComponent = _ref6.sidebarBottomComponent,
+    additionalSidebarIcons = _ref6.additionalSidebarIcons,
     footerTopComponent = _ref6.footerTopComponent,
     footerBottomComponent = _ref6.footerBottomComponent,
     footerLeftComponent = _ref6.footerLeftComponent,
@@ -370,7 +372,8 @@ export default function Layout(_ref6) {
       bottomComponent: sidebarBottomComponent,
       closeSidebar: isMobile ? toggleSidebar : undefined,
       sharedUrls: sharedUrls,
-      includeDiscord: includeDiscord
+      includeDiscord: includeDiscord,
+      additionalSidebarLinks: additionalSidebarIcons
     }), /*#__PURE__*/_jsxs("div", {
       className: "".concat(styles.mainContainerContainer, " ").concat(sidebarToggled ? styles.toggled : null),
       children: [/*#__PURE__*/_jsx("main", {
